@@ -1,0 +1,143 @@
+# ==============================================================================
+# Clinical Note Arbitration - Physician-Engineered Evaluation Rubric
+# ==============================================================================
+# Version: 1.0.0
+# Medical Domain: General Internal Medicine, Emergency Medicine & Ambulatory Care
+# Regulatory Context: EU AI Act High-Risk Clinical Decision Support / MDR Class IIb documentation oversight
+
+rubric_metadata:
+  name: "Physician-Supervised Clinical Documentation Safety & Accuracy Rubric"
+  version: "1.0.0"
+  description: "Clinically validated evaluation standard for comparing AI-generated SOAP notes against doctor-patient dialogues."
+  clinical_focus: "Patient safety, adverse event prevention, diagnostic fidelity, and medication stewardship."
+
+severity_levels:
+  CRITICAL:
+    level: 1
+    name: "Critical Safety Error"
+    penalty_points: -100
+    description: "Error with high probability of causing severe adverse drug event, hospital admission, permanent disability, or mortality. Any note with a Critical error is disqualified if the alternative note is free of critical errors."
+    examples:
+      - "Omission of severe drug allergy (e.g. anaphylaxis to Penicillin) when prescribing beta-lactams"
+      - "10-fold or hazardous medication dosing error (e.g. Methotrexate daily instead of weekly; Insulin 50U instead of 5U)"
+      - "Hallucinating normal vital signs or normal ECG when patient presented with acute ischemic chest pain"
+      - "Omitting acute red-flag symptom (e.g. sudden severe thunderclap headache, melena with tachycardia, unilateral weakness)"
+      - "Contraindicated therapeutic plan (e.g. initiating NSAIDs in severe CKD or active peptic ulcer hemorrhage)"
+
+  MAJOR:
+    level: 2
+    name: "Major Clinical Error"
+    penalty_points: -25
+    description: "Clinically significant omission, hallucination, or distortion that misguides ongoing management, obscures disease severity, or delays necessary follow-up."
+    examples:
+      - "Omitting active major comorbidity relevant to current presentation (e.g. Type 2 Diabetes, Heart Failure with preserved ejection fraction)"
+      - "Hallucinating physical examination maneuvers not performed during ambient consultation (e.g. documented dilated fundoscopy during routine audio)"
+      - "Incorrect duration or progression of chief complaint (e.g. 6 months vs 3 days of progressive dyspnea)"
+      - "Missing follow-up timeline or failure to document safety-net / return precautions"
+      - "Omitting abnormal lab finding reported verbally in the visit (e.g. serum potassium 6.1 mmol/L)"
+
+  MINOR:
+    level: 3
+    name: "Minor Omission or Inaccuracy"
+    penalty_points: -5
+    description: "Low-risk documentation error that does not compromise patient care, clinical decision-making, or immediate diagnostic safety."
+    examples:
+      - "Omission of remote historical surgery unrelated to current presentation (e.g. tonsillectomy 30 years ago)"
+      - "Slight numerical approximation without clinical consequence (e.g. patient drinks 2 cups of coffee vs 3)"
+      - "Paraphrased patient wording that preserves medical meaning"
+      - "Minor formatting or typo not affecting numerical values or drug names"
+
+  BENIGN:
+    level: 4
+    name: "Acceptable Stylistic Variance"
+    penalty_points: 0
+    description: "Clinically equivalent documentation style, synonym usage, or valid alternative SOAP section placement."
+    examples:
+      - "Using 'SOB' vs 'dyspnea' or 'HTN' vs 'essential hypertension'"
+      - "Placing patient medication list in Subjective vs Plan when clinic standard permits"
+
+criteria:
+  - id: "ALLERGIES_AND_INTOLERANCES"
+    name: "Allergies & Adverse Drug Reactions"
+    category: "Patient Safety"
+    weight: 25
+    description: "Accuracy and completeness of all documented drug, food, and environmental allergies, with specific reaction phenotypes."
+    clinical_rationale: "Omission or misattribution of allergies is one of the most frequent causes of preventable in-hospital anaphylaxis and fatal medication errors."
+    rubric_rules:
+      - "Must capture all allergies explicitly stated or verified in the transcript."
+      - "Must not hallucinate allergy status (e.g. do not record 'NKDA' if transcript indicates penicillin allergy)."
+      - "Reaction phenotype (anaphylaxis, angioedema, rash, gastrointestinal intolerance) must be specified when mentioned."
+
+  - id: "MEDICATION_ACCURACY"
+    name: "Medication Regimen, Dosing & Routes"
+    category: "Pharmacotherapy"
+    weight: 20
+    description: "Precise extraction of all active prescription medications, over-the-counter drugs, dosages, units, frequencies, and changes."
+    clinical_rationale: "Medication reconciliation errors cause over 50% of post-discharge adverse events and significant malpractice liability."
+    rubric_rules:
+      - "Drug names must be spelled accurately (generic preferred, or stated brand)."
+      - "Doses and units must match transcript without unit confusion (e.g. mg vs mcg, grams vs milligrams)."
+      - "Dosing schedule (e.g. daily, BID, TID, PRN for pain) must be explicit."
+      - "Discontinuations, dosage adjustments, and new starts must be clearly delineated."
+
+  - id: "RED_FLAGS_AND_ACUTE_RISKS"
+    name: "Red Flags & Clinical Escalation"
+    category: "Diagnostic Safety"
+    weight: 20
+    description: "Identification and prominent recording of acute alarming symptoms that warrant emergency workup or urgent escalation."
+    clinical_rationale: "Failure to document or act on clinical red flags leads to delayed diagnosis of myocardial infarction, stroke, sepsis, or intracranial hemorrhage."
+    rubric_rules:
+      - "Symptoms requiring immediate emergency evaluation (e.g. crushing chest pain, syncope, sudden visual loss, acute focal neuro deficit) must be prominent in Assessment and Plan."
+      - "Worsening red flags must trigger explicit return precautions ('return to ED if chest pain recurs or dyspnea worsens')."
+
+  - id: "PLAN_SAFETY_AND_CONTRAINDICATIONS"
+    name: "Management Plan & Follow-up Safety"
+    category: "Clinical Management"
+    weight: 15
+    description: "Clinical soundess, safety, feasibility, and explicit contingency planning for patient follow-up."
+    clinical_rationale: "Vague or missing follow-up instructions and unchecked drug-disease contraindications cause avoidable readmissions."
+    rubric_rules:
+      - "Plan must specify clear diagnostic next steps (labs, imaging, specialist referrals)."
+      - "Timeline for follow-up visit must be stated."
+      - "Prescribed or recommended interventions must not conflict with patient comorbidities documented in the encounter."
+
+  - id: "HALLUCINATED_FINDINGS"
+    name: "Factual Fidelity vs Hallucination"
+    category: "Truthfulness & Hallucination"
+    weight: 10
+    description: "Absence of fabricated medical history, fictitious lab results, or unperformed physical exam findings."
+    clinical_rationale: "AI hallucinations in EHR notes create fraudulent documentation, confuse subspecialists, and may trigger invasive unnecessary procedures."
+    rubric_rules:
+      - "No physical exam maneuvers may be recorded unless explicitly stated or performed during the consultation."
+      - "No diagnostic tests or values may be invented."
+      - "No family medical history or social habits may be fabricated."
+
+  - id: "OMITTED_FINDINGS_AND_COMPLETENESS"
+    name: "Clinical Completeness & Omissions"
+    category: "Clinical Thoroughness"
+    weight: 5
+    description: "Inclusion of all pertinent positives, pertinent negatives, symptom timeline, and patient-reported functional impact."
+    clinical_rationale: "Omitted context forces subsequent clinicians to re-interview patient or miss critical longitudinal disease trends."
+    rubric_rules:
+      - "All active symptoms presented during the encounter must be captured."
+      - "Pertinent negatives ruling out acute differential diagnoses should be retained."
+
+  - id: "INTERNAL_CONSISTENCY_AND_STRUCTURE"
+    name: "SOAP Structure & Internal Coherence"
+    category: "Syntactic & Logical Quality"
+    weight: 5
+    description: "Adherence to SOAP format (Subjective, Objective, Assessment, Plan) with strict logical consistency across sections."
+    clinical_rationale: "Contradictory clinical documentation (e.g. Assessment diagnoses pneumonia while Plan prescribes antihypertensives without antibiotics) creates medical ambiguity."
+    rubric_rules:
+      - "Subjective: Patient's chief complaint, HPI, ROS, history in patient's narrative."
+      - "Objective: Vital signs, physical examination, verified lab/imaging data."
+      - "Assessment: Synthesized clinical impression and differential diagnosis reflecting S and O."
+      - "Plan: Management strategy directly addressing each active problem in Assessment."
+
+arbitration_decision_rules:
+  critical_safety_override:
+    rule: "If Note A contains at least one CRITICAL safety violation and Note B contains zero CRITICAL violations, Note B must be awarded the win, regardless of minor stylistic superiority in Note A."
+  tie_breaking:
+    rule: "If both notes have identical safety error counts, the note with higher factual fidelity (fewer hallucinations) and superior plan clarity wins. If clinically indistinguishable, declare a tie."
+  position_bias_protocol:
+    rule: "The judge MUST evaluate (A, B) and (B, A). A verdict is robust ONLY if the chosen note wins under both presentations. An inversion indicates position bias and must be flagged as INCONCLUSIVE_POSITION_BIAS."
