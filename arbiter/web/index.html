@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Note Arbitration | LLM-as-a-Judge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #0ea5e9;
+      --primary-hover: #0284c7;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --accent: #8b5cf6;
+      --code-bg: #0b1120;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+      border-bottom: 1px solid var(--card-border);
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-clinical {
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .sample-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .sample-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .sample-btn:hover {
+      border-color: var(--primary);
+      background: #273549;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    textarea {
+      width: 100%;
+      height: 260px;
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      padding: 12px;
+      resize: vertical;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .actions-bar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .btn-arbitrate {
+      background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-arbitrate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
+    }
+    .verdict-card {
+      border: 2px solid var(--primary);
+      display: none;
+    }
+    .verdict-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .verdict-badge {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .badge-win-a { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid var(--success); }
+    .badge-win-b { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
+    .badge-bias { background: rgba(239, 68, 68, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .metric-box {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .metric-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+    .metric-value { font-size: 1.2rem; font-weight: 700; color: #fff; margin-top: 4px; }
+    .rationale-text {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.9rem;
+      white-space: pre-line;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>Clinical Note Arbitration <span class="badge-clinical">Physician Rubric Arbiter</span></h1>
+      <p class="subtitle">LLM-as-a-Judge with Dual-Presentation Position-Bias Mitigation & Critical Safety Invariants</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="sample-bar">
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Quick-Load Clinical Scenarios:</span>
+      <button class="sample-btn" onclick="loadSample(0)">Scenario 1: ACE-Inhibitor Cough & Anaphylaxis Risk</button>
+      <button class="sample-btn" onclick="loadSample(1)">Scenario 2: T2DM & Orthostatic Lightheadedness</button>
+      <button class="sample-btn" onclick="loadSample(2)">Scenario 3: Acute Renal Colic vs Back Strain</button>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title">
+        <span>Doctor-Patient Consultation Dialogue (Ambient Audio Transcript)</span>
+        <span id="encounter-id-tag" style="color: var(--primary); font-size: 0.85rem;">Encounter: ACI-001</span>
+      </div>
+      <textarea id="transcript" placeholder="Paste doctor-patient consultation transcript here..."></textarea>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">
+          <span>Candidate Note A (e.g. GPT-4o)</span>
+          <span style="color: var(--success); font-size: 0.8rem;">Clinical Note A</span>
+        </div>
+        <textarea id="note_a" placeholder="Clinical SOAP Note A..."></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>Candidate Note B (e.g. Claude 3.5 Haiku)</span>
+          <span style="color: var(--accent); font-size: 0.8rem;">Clinical Note B</span>
+        </div>
+        <textarea id="note_b" placeholder="Clinical SOAP Note B..."></textarea>
+      </div>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn-arbitrate" id="arbitrate-btn" onclick="runArbitration()">Execute Dual-Swap Arbitration</button>
+    </div>
+
+    <div class="card verdict-card" id="verdict-card">
+      <div class="verdict-header">
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Arbitration Decision</span>
+          <div id="verdict-title" class="verdict-badge badge-win-a" style="margin-top: 6px;">NOTE A WINS</div>
+        </div>
+        <div style="text-align: right;">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Safety Invariant Status</span>
+          <div id="safety-status" style="font-weight: 600; color: var(--success); margin-top: 4px;">Zero Critical Violations</div>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-box">
+          <div class="metric-label">Judge Confidence</div>
+          <div class="metric-value" id="confidence-val">98%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Position Bias Check</div>
+          <div class="metric-value" id="bias-val" style="color: var(--success);">Passed (No Bias)</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Critical Errors (A / B)</div>
+          <div class="metric-value" id="errors-val">0 / 2</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Estimated Cost</div>
+          <div class="metric-value" id="cost-val">$0.0000</div>
+        </div>
+      </div>
+
+      <div class="card-title">Physician Clinical Argument & Rationale</div>
+      <div class="rationale-text" id="rationale-val"></div>
+    </div>
+  </div>
+
+  <script>
+    let samples = [];
+
+    async function init() {
+      try {
+        const res = await fetch('/api/samples');
+        if (res.ok) {
+          samples = await res.json();
+          if (samples.length > 0) {
+            loadSample(0);
+          }
+        }
+      } catch (e) {
+        console.warn("Could not load samples:", e);
+      }
+    }
+
+    function loadSample(index) {
+      if (!samples || !samples[index]) return;
+      const s = samples[index];
+      document.getElementById('transcript').value = s.transcript || "";
+      document.getElementById('note_a').value = s.note_a || "";
+      document.getElementById('note_b').value = s.note_b || "";
+      document.getElementById('encounter-id-tag').innerText = `Encounter: ${s.encounter_id} (${s.specialty || ''})`;
+      document.getElementById('verdict-card').style.display = 'none';
+    }
+
+    async function runArbitration() {
+      const btn = document.getElementById('arbitrate-btn');
+      const transcript = document.getElementById('transcript').value;
+      const note_a = document.getElementById('note_a').value;
+      const note_b = document.getElementById('note_b').value;
+
+      if (!transcript || !note_a || !note_b) {
+        alert("Please ensure transcript, Note A, and Note B are populated.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = "Evaluating Swap Presentations (AB & BA)...";
+
+      try {
+        const res = await fetch('/api/arbitrate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ transcript, note_a, note_b })
+        });
+        const data = await res.json();
+
+        // Render card
+        const card = document.getElementById('verdict-card');
+        const title = document.getElementById('verdict-title');
+        title.innerText = data.final_verdict.replace(/_/g, ' ');
+
+        if (data.final_verdict === 'NOTE_A_WINS') {
+          title.className = 'verdict-badge badge-win-a';
+        } else if (data.final_verdict === 'NOTE_B_WINS') {
+          title.className = 'verdict-badge badge-win-b';
+        } else {
+          title.className = 'verdict-badge badge-bias';
+        }
+
+        document.getElementById('confidence-val').innerText = `${Math.round(data.confidence * 100)}%`;
+
+        const biasEl = document.getElementById('bias-val');
+        if (data.position_bias_detected) {
+          biasEl.innerText = "BIAS DETECTED";
+          biasEl.style.color = "var(--danger)";
+        } else {
+          biasEl.innerText = "Passed (Consistent)";
+          biasEl.style.color = "var(--success)";
+        }
+
+        document.getElementById('errors-val').innerText = `${data.note_a_critical_count} / ${data.note_b_critical_count}`;
+        document.getElementById('cost-val').innerText = `$${(data.total_cost_usd || 0).toFixed(5)}`;
+        document.getElementById('rationale-val').innerText = data.clinical_rationale;
+
+        card.style.display = 'block';
+        card.scrollIntoView({ behavior: 'smooth' });
+      } catch (err) {
+        alert("Arbitration failed: " + err);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Execute Dual-Swap Arbitration";
+      }
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
