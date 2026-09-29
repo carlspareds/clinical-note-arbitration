@@ -1,0 +1,62 @@
+[
+  {
+    "dialogue_id": "MTS-001",
+    "section": "History of Present Illness",
+    "dialogue": "Doctor: Hello Mr. Miller, what brings you in?\nPatient: Doctor, I've had this terrible headache behind my right eye for the last 3 days. It feels like throbbing and light hurts my eyes.\nDoctor: Any nausea, vomiting, or visual changes like flashing lights or blind spots?\nPatient: Yes, I felt quite sick to my stomach yesterday and saw jagged lines before the headache started.\nDoctor: How often do these episodes occur?\nPatient: About once or twice a month, usually lasting around 24 hours.",
+    "gold_summary": "Patient is a male presenting with recurring right-sided periorbital throbbing headaches of 3 days duration, associated with photophobia, nausea, and preceding visual aura (scintillating scotoma / jagged lines), occurring 1-2 times monthly."
+  },
+  {
+    "dialogue_id": "MTS-002",
+    "section": "Medications & Allergies",
+    "dialogue": "Doctor: Let's review what pills you take every day.\nPatient: I take Metformin 500mg twice a day for my diabetes, and Atorvastatin 20mg at night. I also take Aspirin 81mg baby aspirin every morning.\nDoctor: Any allergies to medications?\nPatient: I get an itchy rash if I take Bactrim or sulfa antibiotics.",
+    "gold_summary": "Current medications: Metformin 500mg BID, Atorvastatin 20mg QHS, Aspirin 81mg daily. Allergies: Sulfa/Bactrim (cutaneous rash)."
+  },
+  {
+    "dialogue_id": "MTS-003",
+    "section": "Review of Systems",
+    "dialogue": "Doctor: Any fever, unintentional weight loss, or night sweats?\nPatient: No fevers, but I did lose about 8 pounds over the past month without trying. No drenching sweats.\nDoctor: Any cough or shortness of breath?\nPatient: Mild dry cough for two weeks, no blood in the phlegm.",
+    "gold_summary": "Constitutional: Positive for 8-pound unintentional weight loss over 1 month; negative for fever or night sweats. Respiratory: Positive for mild dry cough x 2 weeks; negative for hemoptysis."
+  },
+  {
+    "dialogue_id": "MTS-004",
+    "section": "Physical Examination",
+    "dialogue": "Doctor: Your sitting blood pressure is 138 over 86, pulse is 74 regular, oxygen saturation is 98 percent on room air. Lungs are clear to auscultation bilaterally with good air movement. Heart has regular rate and rhythm with normal S1 and S2, no murmurs, rubs, or gallops. Abdomen is soft, non-tender, non-distended. No ankle swelling.",
+    "gold_summary": "Vitals: BP 138/86 mmHg, HR 74 bpm, SpO2 98% room air. Lungs: Clear bilaterally. Heart: RRR, normal S1/S2, no murmurs. Abdomen: Soft, non-tender, non-distended. Extremities: No peripheral edema."
+  },
+  {
+    "dialogue_id": "MTS-005",
+    "section": "Assessment",
+    "dialogue": "Doctor: Based on your symptoms of polyuria, polydipsia, and an elevated fasting blood glucose of 210 mg/dL today with an HbA1c of 9.2%, you have newly diagnosed Type 2 Diabetes Mellitus with moderate hyperglycemia, complicated by mild essential hypertension.",
+    "gold_summary": "1. Newly diagnosed Type 2 Diabetes Mellitus with symptomatic hyperglycemia (fasting glucose 210 mg/dL, HbA1c 9.2%).\n2. Essential Hypertension - Stage 1."
+  },
+  {
+    "dialogue_id": "MTS-006",
+    "section": "Plan",
+    "dialogue": "Doctor: We will start you on Metformin 500mg once daily with dinner for one week, then increase to 500mg twice daily with meals. I want you to meet with our certified diabetes educator, begin checking fasting blood glucose each morning, and return to clinic in 4 weeks for a repeat metabolic panel.",
+    "gold_summary": "1. Initiate Metformin 500mg PO daily x 1 week, titrate to 500mg PO BID with meals.\n2. Referral for diabetes self-management education and nutritional counseling.\n3. Daily home fasting blood glucose log.\n4. Follow-up clinic appointment in 4 weeks with repeat BMP."
+  },
+  {
+    "dialogue_id": "MTS-007",
+    "section": "Social History",
+    "dialogue": "Doctor: Do you smoke cigarettes or use tobacco products?\nPatient: I smoked half a pack a day for 15 years, but quit completely 5 years ago.\nDoctor: How about alcohol?\nPatient: A glass of red wine on weekends with dinner, maybe 1-2 drinks a week. No recreational drugs.",
+    "gold_summary": "Tobacco: Former smoker, 7.5 pack-year history, quit 5 years ago. Alcohol: Occasional, 1-2 glasses of wine weekly. Illicit Drugs: Denies illicit drug use."
+  },
+  {
+    "dialogue_id": "MTS-008",
+    "section": "Past Medical History",
+    "dialogue": "Doctor: Tell me about your past medical conditions and any surgeries.\nPatient: I had an appendectomy when I was 16, and had laparoscopic cholecystectomy 4 years ago. I've had mild asthma since childhood and hypothyroidism managed on Synthroid.",
+    "gold_summary": "Past Medical History: Childhood asthma, Hypothyroidism.\nPast Surgical History: Appendectomy (age 16), Laparoscopic cholecystectomy (4 years prior)."
+  },
+  {
+    "dialogue_id": "MTS-009",
+    "section": "Family History",
+    "dialogue": "Doctor: Any heart disease or cancer running in the family?\nPatient: My father died of a myocardial infarction at age 52, and his brother also had coronary bypass surgery in his fifties. My mother is 78 and has osteoporosis and hypertension.",
+    "gold_summary": "Family History: Significant premature coronary artery disease in first-degree relatives (father fatal MI at age 52; paternal uncle CABG in 50s). Maternal history of hypertension and osteoporosis."
+  },
+  {
+    "dialogue_id": "MTS-010",
+    "section": "Return Precautions",
+    "dialogue": "Doctor: While we await your chest X-ray and lab results, I want you to remember: if you develop sudden shortness of breath, chest pain, coughing up blood, or a high fever above 101.5 F, do not wait for clinic hours—go straight to the nearest emergency department.",
+    "gold_summary": "Emergency Return Precautions: Explicit instructions provided to present immediately to the emergency department if acute dyspnea, chest pain, hemoptysis, or high-grade fever (>101.5 F) develops."
+  }
+]
