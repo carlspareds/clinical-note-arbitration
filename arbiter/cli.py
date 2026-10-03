@@ -164,8 +164,13 @@ def judge(
     table.add_column("Metric / Field", style="cyan", no_wrap=True)
     table.add_column("Value / Verdict", style="magenta")
 
+    v_color = (
+        "yellow"
+        if verdict.final_verdict.value == "INCONCLUSIVE_POSITION_BIAS"
+        else ("green" if "WINS" in verdict.final_verdict.value else "white")
+    )
     table.add_row(
-        "Final Arbitrated Verdict", f"[bold green]{verdict.final_verdict.value}[/bold green]"
+        "Final Arbitrated Verdict", f"[bold {v_color}]{verdict.final_verdict.value}[/bold {v_color}]"
     )
     table.add_row("Winning Note", str(verdict.winning_note_id))
     table.add_row("Confidence Score", f"{verdict.confidence:.2%}")

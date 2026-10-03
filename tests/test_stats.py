@@ -116,3 +116,14 @@ def test_stats_edge_cases():
 
     # Single category kappa
     assert calculate_cohens_kappa(["PASS", "PASS"], ["PASS", "PASS"]) == 1.0
+
+    # Extreme class imbalance in bootstrap resample
+    r1 = ["PASS"] * 99 + ["FAIL"]
+    r2 = ["PASS"] * 99 + ["FAIL"]
+    lower, upper = calculate_cohens_kappa_ci(r1, r2, n_bootstrap=100, seed=42)
+    assert 0.0 <= lower <= upper <= 1.0
+
+    # None seed handling
+    lower_none, upper_none = calculate_cohens_kappa_ci(["PASS", "FAIL"], ["PASS", "FAIL"], n_bootstrap=10, seed=None)
+    assert -1.0 <= lower_none <= upper_none <= 1.0
+

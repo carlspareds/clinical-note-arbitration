@@ -117,7 +117,7 @@ def calculate_cohens_kappa_ci(
     rater2: Sequence[Any],
     confidence: float = 0.95,
     n_bootstrap: int = 1000,
-    seed: int = 42,
+    seed: Optional[int] = 42,
 ) -> Tuple[float, float]:
     """
     Calculate non-parametric bootstrap confidence interval for Cohen's Kappa.

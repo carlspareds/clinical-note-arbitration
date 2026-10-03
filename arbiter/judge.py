@@ -207,7 +207,7 @@ Output ONLY the requested JSON object.
         crit_a = sum(1 for v in all_viols_a if v.severity == SeverityEnum.CRITICAL)
         crit_b = sum(1 for v in all_viols_b if v.severity == SeverityEnum.CRITICAL)
 
-        # Arbitration logic
+        # Arbitration logic: Check presentation consistency first (order invariance invariant)
         raw_orderings_disagree = eval_ab.winner != eval_ba.winner
         position_bias_detected = raw_orderings_disagree
         final_verdict = FinalVerdictEnum.TIE
@@ -215,68 +215,57 @@ Output ONLY the requested JSON object.
         winning_model = None
         confidence = 0.5
 
-        # Check for Critical Safety Override first
-        if crit_a > 0 and crit_b == 0:
+        if raw_orderings_disagree:
+            # Order inconsistency detected (position bias): inhibit autonomous sign-off and route to physician
+            position_bias_detected = True
+            final_verdict = FinalVerdictEnum.INCONCLUSIVE_POSITION_BIAS
+            winning_note_id = None
+            winning_model = None
+            confidence = 0.40
+            clinical_summary = (
+                f"Position bias detected: Presentation AB selected '{eval_ab.winner.value}' "
+                f"while Presentation BA selected '{eval_ba.winner.value}'. "
+                f"Verdict is deemed INCONCLUSIVE pending mandatory human physician review."
+            )
+        elif crit_a > 0 and crit_b == 0:
             final_verdict = FinalVerdictEnum.NOTE_B_WINS
             winning_note_id = "Note B"
             winning_model = model_b
             confidence = 0.98
-            bias_note = ""
-            if raw_orderings_disagree:
-                bias_note = (
-                    " (Clinical Critical Safety Override enforced despite presentation asymmetry)."
-                )
             clinical_summary = (
-                f"Note B decisively won due to CRITICAL safety violation in Note A{bias_note}."
+                "Note B decisively won due to CRITICAL safety violation in Note A."
             )
         elif crit_b > 0 and crit_a == 0:
             final_verdict = FinalVerdictEnum.NOTE_A_WINS
             winning_note_id = "Note A"
             winning_model = model_a
             confidence = 0.98
-            bias_note = ""
-            if raw_orderings_disagree:
-                bias_note = (
-                    " (Clinical Critical Safety Override enforced despite presentation asymmetry)."
-                )
             clinical_summary = (
-                f"Note A decisively won due to CRITICAL safety violation in Note B{bias_note}."
+                "Note A decisively won due to CRITICAL safety violation in Note B."
             )
-        elif not raw_orderings_disagree:
-            # Check agreement between AB and BA
-            if eval_ab.winner == OrderVerdict.A:
-                final_verdict = FinalVerdictEnum.NOTE_A_WINS
-                winning_note_id = "Note A"
-                winning_model = model_a
-                confidence = round(0.70 + (eval_ab.margin + eval_ba.margin) / 400.0, 2)
-                confidence = min(0.99, max(0.60, confidence))
-                clinical_summary = (
-                    "Note A consistently won across both forward and swapped orderings."
-                )
-            elif eval_ab.winner == OrderVerdict.B:
-                final_verdict = FinalVerdictEnum.NOTE_B_WINS
-                winning_note_id = "Note B"
-                winning_model = model_b
-                confidence = round(0.70 + (eval_ab.margin + eval_ba.margin) / 400.0, 2)
-                confidence = min(0.99, max(0.60, confidence))
-                clinical_summary = (
-                    "Note B consistently won across both forward and swapped orderings."
-                )
-            else:
-                final_verdict = FinalVerdictEnum.TIE
-                confidence = 0.50
-                clinical_summary = (
-                    "Both presentations yielded an indistinguishable clinical quality tie."
-                )
-        else:
-            # Contradiction detected (e.g. Option 1 won in both, meaning A won in AB and B won in BA)
-            position_bias_detected = True
-            final_verdict = FinalVerdictEnum.INCONCLUSIVE_POSITION_BIAS
-            confidence = 0.40
+        elif eval_ab.winner == OrderVerdict.A:
+            final_verdict = FinalVerdictEnum.NOTE_A_WINS
+            winning_note_id = "Note A"
+            winning_model = model_a
+            confidence = round(0.70 + (eval_ab.margin + eval_ba.margin) / 400.0, 2)
+            confidence = min(0.99, max(0.60, confidence))
             clinical_summary = (
-                f"Position bias detected: Presentation AB selected '{eval_ab.winner.value}' "
-                f"while Presentation BA selected '{eval_ba.winner.value}'. "
-                f"Verdict is deemed INCONCLUSIVE pending human physician review."
+                "Note A consistently won across both forward and swapped orderings."
+            )
+        elif eval_ab.winner == OrderVerdict.B:
+            final_verdict = FinalVerdictEnum.NOTE_B_WINS
+            winning_note_id = "Note B"
+            winning_model = model_b
+            confidence = round(0.70 + (eval_ab.margin + eval_ba.margin) / 400.0, 2)
+            confidence = min(0.99, max(0.60, confidence))
+            clinical_summary = (
+                "Note B consistently won across both forward and swapped orderings."
+            )
+        else:
+            final_verdict = FinalVerdictEnum.TIE
+            confidence = 0.50
+            clinical_summary = (
+                "Both presentations yielded an indistinguishable clinical quality tie."
             )
 
         combined_rationale = (

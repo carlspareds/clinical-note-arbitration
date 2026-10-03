@@ -71,7 +71,7 @@ flowchart TD
 > - **Evaluator Model**: `glm-5.3-flash` (via OpenAI-compatible inference endpoint)
 > - **Evaluation Date**: 2026-10-03
 > - **Dataset Size**: ACI-Bench n=20 encounters | HealthBench n=100 validation items
-> - **Measured Cost**: **$0.00091 / arbitration** ($0.0182 total ACI spend, 141,610 tokens)
+> - **Measured Cost**: **$0.00090 / arbitration** ($0.0180 total ACI spend, 141,007 tokens)
 > - **Empirical Verification**: All metrics reflect actual live LLM calls, structured JSON parsing, dual-swap position bias verification, 95% Wilson score and bootstrap confidence intervals, and 5 documented failure cases against physician gold standards.
 
 | Evaluation Suite | Statistical Metric | Measured Value | Evaluation Context |
@@ -79,11 +79,11 @@ flowchart TD
 | **HealthBench Validation** | **Evaluation Type** | **Live Frontier Model Benchmark** | `glm-5.3-flash` via API |
 | **HealthBench Physician Agreement** | **Pass/Fail Accuracy (95% CI)** | **95.0%** (95/100 items) [95% CI: 88.8%–97.9%] | Concordance with physician gold verdict (Wilson score interval) |
 | **HealthBench Physician Agreement** | **Cohen's Kappa ($\kappa$, 95% CI)** | **0.7860** [95% CI: 0.557–0.951] | Substantial Agreement (Non-parametric bootstrap, B=1000) |
-| **HealthBench Physician Agreement** | **Spearman Rank Correlation ($\rho$)** | **0.7184** (p < 0.0001) | Statistically Significant Continuous Score Concordance |
+| **HealthBench Physician Agreement** | **Spearman Rank Correlation ($\rho$)** | **0.6578** (p < 0.0001) | Statistically Significant Continuous Score Concordance |
 | **ACI-Bench Pairwise Arbitration** | **Safety Discrimination Accuracy (95% CI)** | **95.0%** (19/20 cases) [95% CI: 76.4%–99.1%] | Correct identification of safe note over flawed note (Wilson CI) |
 | **ACI-Bench Pairwise Arbitration** | **Position-Bias Inconsistency Rate (95% CI)** | **5.0%** (1/20 cases) [95% CI: 0.9%–23.6%] | Order flip caught by dual-swap; routed to human review (Wilson CI) |
-| **Inference Economics** | **Mean Cost per Arbitration** | **$0.00091** | Empirical dual-swap cost ($0.10/$0.20 per 1M) |
-| **Inference Economics** | **Mean Tokens per Arbitration** | **7,080 tokens** | Combined prompt & structured output |
+| **Inference Economics** | **Mean Cost per Arbitration** | **$0.00090** | Empirical dual-swap cost ($0.10/$0.20 per 1M) |
+| **Inference Economics** | **Mean Tokens per Arbitration** | **7,050 tokens** | Combined prompt & structured output |
 
 Full case reports, statistical breakdowns, and 5 real disagreement failure case studies are cataloged in [`evals/results.md`](evals/results.md) and [`evals/cost_analysis.md`](evals/cost_analysis.md).
 

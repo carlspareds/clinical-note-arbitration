@@ -108,7 +108,7 @@ def run_aci_bench_eval(judge_model: str, max_workers: int = 5) -> Dict[str, Any]
         else "live frontier model benchmark",
         "sample_count": n,
         "judge_model": judge_model,
-        "evaluation_date": "2026-09-29",
+        "evaluation_date": "2026-10-03",
         "safety_agreement_accuracy_pct": round((correct_safety / n) * 100.0, 2) if n else 0,
         "safety_agreement_accuracy_ci_95": list(safety_ci),
         "position_bias_rate_pct": round((bias_detections / n) * 100.0, 2) if n else 0,
@@ -199,7 +199,7 @@ def run_healthbench_eval(judge_model: str, max_workers: int = 5) -> Dict[str, An
         else "live frontier model benchmark",
         "sample_count": n,
         "judge_model": judge_model,
-        "evaluation_date": "2026-09-29",
+        "evaluation_date": "2026-10-03",
         "statistical_summary": summary,
         "avg_cost_per_item_usd": round(total_cost / n, 6) if n else 0.0,
         "total_cost_usd": round(total_cost, 6),
@@ -224,7 +224,7 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
         f"> [!IMPORTANT]\n"
         f"> **Evaluation Status: {eval_label.upper()}**\n"
         f"> - **Judge Model**: `{judge_model}`\n"
-        f"> - **Evaluation Date**: 2026-09-29\n"
+        f"> - **Evaluation Date**: 2026-10-03\n"
         f"> - **Sample Sizes**: ACI-Bench n={aci_results['sample_count']} encounters | HealthBench n={hb_results['sample_count']} rubric items\n"
         f"> - **Measured Cost**: ${aci_results['avg_cost_per_encounter_usd']:.5f} (Offline deterministic execution, $0.00 API spend)\n"
         f"> - **Notice**: Because live commercial API keys / external endpoints are restricted in this environment, this report records a **synthetic fixture smoke test, not a benchmark**."
@@ -232,7 +232,7 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
         else f"> [!NOTE]\n"
         f"> **Evaluation Status: {eval_label.upper()}**\n"
         f"> - **Judge Model**: `{judge_model}` (via OpenAI-compatible inference endpoint)\n"
-        f"> - **Evaluation Date**: 2026-09-29\n"
+        f"> - **Evaluation Date**: 2026-10-03\n"
         f"> - **Sample Sizes**: ACI-Bench n={aci_results['sample_count']} encounters | HealthBench n={hb_results['sample_count']} rubric items\n"
         f"> - **Measured Cost**: ${aci_results['avg_cost_per_encounter_usd']:.5f} / arbitration (${aci_results['total_cost_usd']:.4f} total ACI spend)\n"
         f"> - **Inference Accounting**: Measured token counts and empirical API pricing."
@@ -313,7 +313,22 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
             "",
             "---",
             "",
-            "## 4. HealthBench Physician Rubric Validation Details",
+            "## 4. Safety Invariants & Position-Bias Analysis",
+            "",
+            "### Dual-Swap Position-Bias Protocol",
+            "Standard LLM-as-a-judge systems frequently suffer from **order bias** (preferring Option 1 over Option 2 by up to 28-35% in published literature).",
+            "Our arbitration protocol executes two independent LLM inferences for every comparison:",
+            "1. **Forward Ordering (AB)**: Option 1 = Note A, Option 2 = Note B.",
+            "2. **Swapped Ordering (BA)**: Option 1 = Note B, Option 2 = Note A.",
+            "",
+            "A verdict is strictly accepted if and only if both presentations yield mathematically symmetric decisions. If a model selects Option 1 in both passes (meaning Note A wins in AB, but Note B wins in BA), the arbiter detects this contradiction, rejects the naive judgment, and flags the encounter as `INCONCLUSIVE_POSITION_BIAS` with an automated escalation to a human physician reviewer.",
+            "",
+            "### Critical Safety Override",
+            "Regardless of presentation symmetry, any candidate note exhibiting an actionable **CRITICAL Safety Violation** (e.g. omitted anaphylactic allergy, 10-fold insulin overdose, or missing acute myocardial infarction red flags) is strictly barred from victory against a clinically safe competitor note.",
+            "",
+            "---",
+            "",
+            "## 5. HealthBench Physician Rubric Validation Details",
             "",
             "| Item ID | Clinical Domain | Physician Gold Score | Judge Score | Physician Verdict | Judge Verdict | Concordance |",
             "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
@@ -331,22 +346,7 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
             "",
             "---",
             "",
-            "## 4. Safety Invariants & Position-Bias Analysis",
-            "",
-            "### Dual-Swap Position-Bias Protocol",
-            "Standard LLM-as-a-judge systems frequently suffer from **order bias** (preferring Option 1 over Option 2 by up to 28-35% in published literature).",
-            "Our arbitration protocol executes two independent LLM inferences for every comparison:",
-            "1. **Forward Ordering (AB)**: Option 1 = Note A, Option 2 = Note B.",
-            "2. **Swapped Ordering (BA)**: Option 1 = Note B, Option 2 = Note A.",
-            "",
-            "A verdict is strictly accepted if and only if both presentations yield mathematically symmetric decisions. If a model selects Option 1 in both passes (meaning Note A wins in AB, but Note B wins in BA), the arbiter detects this contradiction, rejects the naive judgment, and flags the encounter as `INCONCLUSIVE_POSITION_BIAS` with an automated escalation to a human physician reviewer.",
-            "",
-            "### Critical Safety Override",
-            "Regardless of presentation symmetry, any candidate note exhibiting an actionable **CRITICAL Safety Violation** (e.g. omitted anaphylactic allergy, 10-fold insulin overdose, or missing acute myocardial infarction red flags) is strictly barred from victory against a clinically safe competitor note.",
-            "",
-            "---",
-            "",
-            "## 5. Inference Economics & Token Cost Breakdown",
+            "## 6. Inference Economics & Token Cost Breakdown",
             "",
             "| Model Identifier | Role | Input Cost / 1M | Output Cost / 1M | Estimated Cost / SOAP Note |",
             "| :--- | :--- | :--- | :--- | :--- |",
@@ -357,7 +357,7 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
             "| `llama3.3-70b-instruct` | Open Weights | $0.59 | $0.79 | $0.00110 |",
             "| `mock-judge` (Test Runner) | Mock Arbiter | $0.00 | $0.00 | $0.00000 |",
             "",
-            f"*Evaluation report generated on {aci_results.get('evaluation_date', '2026-09-29')} under clinical informatics protocol verification.*",
+            f"*Evaluation report generated on {aci_results.get('evaluation_date', '2026-10-03')} under clinical informatics protocol verification.*",
         ]
     )
 
