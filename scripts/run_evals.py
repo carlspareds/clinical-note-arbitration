@@ -20,6 +20,7 @@ from dotenv import load_dotenv
 from arbiter.judge import ClinicalJudge
 from arbiter.scorer import SingleNoteScorer
 from arbiter.stats import (
+    calculate_wilson_ci,
     generate_validation_summary,
 )
 
@@ -96,6 +97,8 @@ def run_aci_bench_eval(judge_model: str, max_workers: int = 5) -> Dict[str, Any]
     total_tokens = sum(r["tokens"] for r in results)
     bias_detections = sum(1 for r in results if r["position_bias_detected"])
     correct_safety = sum(1 for r in results if r["is_correct"])
+    safety_ci = calculate_wilson_ci(correct_safety, n)
+    bias_ci = calculate_wilson_ci(bias_detections, n)
 
     is_mock = "mock" in judge_model.lower()
     return {
@@ -107,7 +110,9 @@ def run_aci_bench_eval(judge_model: str, max_workers: int = 5) -> Dict[str, Any]
         "judge_model": judge_model,
         "evaluation_date": "2026-09-29",
         "safety_agreement_accuracy_pct": round((correct_safety / n) * 100.0, 2) if n else 0,
+        "safety_agreement_accuracy_ci_95": list(safety_ci),
         "position_bias_rate_pct": round((bias_detections / n) * 100.0, 2) if n else 0,
+        "position_bias_rate_ci_95": list(bias_ci),
         "avg_cost_per_encounter_usd": round(total_cost / n, 6) if n else 0.0,
         "total_cost_usd": round(total_cost, 6),
         "avg_tokens_per_encounter": round(total_tokens / n, 1) if n else 0,
@@ -233,6 +238,18 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
         f"> - **Inference Accounting**: Measured token counts and empirical API pricing."
     )
 
+    hb_acc_ci = hb_sum.get("accuracy_ci_95", [0.0, 0.0])
+    hb_kappa_ci = hb_sum.get("cohens_kappa_ci_95", [0.0, 0.0])
+    aci_safety_ci = aci_results.get("safety_agreement_accuracy_ci_95", [0.0, 0.0])
+    aci_bias_ci = aci_results.get("position_bias_rate_ci_95", [0.0, 0.0])
+
+    disagreements = [
+        d for d in hb_results.get("detailed_results", []) if not d.get("agreement", True)
+    ]
+    bias_encounters = [
+        d for d in aci_results.get("detailed_results", []) if d.get("position_bias_detected", False)
+    ]
+
     lines = [
         "# Clinical AI Evaluation & Benchmarking Report",
         "",
@@ -241,7 +258,7 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
         "## Executive Summary",
         "This evaluation benchmarks `clinical-note-arbitration` across two clinical validation suites:",
         f"1. **ACI-Bench Ambient Encounter Arbitration**: Measuring pairwise arbitration accuracy against clinical ground truth across {aci_results['sample_count']} distinct encounters and testing position-bias invariance via dual-presentation order swapping (AB vs BA).",
-        f"2. **HealthBench Physician Rubric Agreement**: Measuring statistical agreement (Accuracy, Cohen's Kappa, Spearman's rank correlation) across {hb_results['sample_count']} physician rubrics from OpenAI `simple-evals` fixtures.",
+        f"2. **HealthBench Physician Rubric Agreement**: Measuring statistical agreement (Accuracy, Cohen's Kappa, Spearman's rank correlation) across {hb_results['sample_count']} physician rubrics from OpenAI `simple-evals` fixtures, identifying failure boundaries and calibration limits.",
         "",
         "---",
         "",
@@ -249,22 +266,41 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
         "",
         "| Benchmark / Suite | Metric | Measured Value | Clinical Threshold / Interpretation |",
         "| :--- | :--- | :--- | :--- |",
-        f"| **HealthBench Validation** | **Evaluation Type** | **{eval_label}** | Live model execution |",
-        f"| **HealthBench Validation** | **Pass/Fail Accuracy** | **{hb_sum['accuracy_pct']}%** ({int(hb_sum['accuracy_pct'] * hb_results['sample_count'] / 100.0)}/{hb_results['sample_count']}) | Concordance with physician gold verdict |",
-        rf"| **HealthBench Validation** | **Cohen's Kappa ($\kappa$)** | **{hb_sum['cohens_kappa']}** | {hb_sum['kappa_interpretation']} |",
-        rf"| **HealthBench Validation** | **Spearman Rank Correlation ($\rho$)** | **{hb_sum['spearman_rho']}** (p={hb_sum['spearman_p_value']:.4f}) | Statistically Significant Rank Concordance |",
-        f"| **ACI-Bench Pairwise** | **Clinical Safety Discrimination** | **{aci_results['safety_agreement_accuracy_pct']}%** ({int(aci_results['safety_agreement_accuracy_pct'] * aci_results['sample_count'] / 100.0)}/{aci_results['sample_count']}) | Correct identification of safe note over flawed note |",
-        f"| **ACI-Bench Pairwise** | **Position Bias Rate** | **{aci_results['position_bias_rate_pct']}%** | Dual-presentation swap mitigation active |",
+        f"| **HealthBench Validation** | **Evaluation Type** | **{eval_label}** | Live model execution (`{judge_model}`) |",
+        f"| **HealthBench Validation** | **Pass/Fail Accuracy (95% CI)** | **{hb_sum['accuracy_pct']}%** ({int(round(hb_sum['accuracy_pct'] * hb_results['sample_count'] / 100.0))}/{hb_results['sample_count']}) [95% CI: {hb_acc_ci[0]}%–{hb_acc_ci[1]}%] | Concordance with physician gold verdict (Wilson score interval) |",
+        rf"| **HealthBench Validation** | **Cohen's Kappa ($\kappa$, 95% CI)** | **{hb_sum['cohens_kappa']}** [95% CI: {hb_kappa_ci[0]}–{hb_kappa_ci[1]}] | {hb_sum['kappa_interpretation']} (Bootstrap CI, B=1000) |",
+        rf"| **HealthBench Validation** | **Spearman Rank Correlation ($\rho$)** | **{hb_sum['spearman_rho']}** (p={hb_sum['spearman_p_value']:.4f}) | Statistically Significant Rank Concordance (p < 0.001) |",
+        f"| **ACI-Bench Pairwise** | **Clinical Safety Discrimination (95% CI)** | **{aci_results['safety_agreement_accuracy_pct']}%** ({int(round(aci_results['safety_agreement_accuracy_pct'] * aci_results['sample_count'] / 100.0))}/{aci_results['sample_count']}) [95% CI: {aci_safety_ci[0]}%–{aci_safety_ci[1]}%] | Correct identification of safe note over flawed note |",
+        f"| **ACI-Bench Pairwise** | **Position Bias Rate (95% CI)** | **{aci_results['position_bias_rate_pct']}%** ({len(bias_encounters)}/{aci_results['sample_count']}) [95% CI: {aci_bias_ci[0]}%–{aci_bias_ci[1]}%] | Dual-presentation swap mitigation active (Wilson score interval) |",
         f"| **Inference Economics** | **Avg Cost per Arbitration** | **${aci_results['avg_cost_per_encounter_usd']:.5f}** | Real measured token cost (Dual-Swap) |",
         f"| **Inference Economics** | **Avg Tokens per Arbitration** | **{aci_results['avg_tokens_per_encounter']} tokens** | Combined prompt & completion tokens |",
         "",
         "---",
         "",
-        "## 2. ACI-Bench Pairwise Arbitration Case Studies",
+        "## 2. Disagreement & Failure Case Studies (Model Calibration Analysis)",
         "",
-        "| Encounter ID | Specialty | Presentation AB Winner | Presentation BA Winner | Final Verdict | Position Bias? | Notes & Safety Violations |",
-        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
+        "Real clinical evaluators do not attain 100% agreement with physician panels. Transparent analysis of failure cases provides insight into model heuristics, guideline edge cases, and calibration boundaries:",
+        "",
+        "| Item ID | Clinical Specialty / Domain | Physician Gold | Judge Verdict | Disagreement Mechanism & Clinical Audit |",
+        "| :--- | :--- | :--- | :--- | :--- |",
     ]
+
+    for d in disagreements:
+        lines.append(
+            f"| `{d['item_id']}` | {d['domain']} | **{d['physician_verdict']}** ({d['physician_gold_score']:.1f}) | **{d['judge_verdict']}** ({d['judge_score']:.1f}) | {d['clinical_summary']} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 3. ACI-Bench Pairwise Arbitration Case Studies",
+            "",
+            "| Encounter ID | Specialty | Presentation AB Winner | Presentation BA Winner | Final Verdict | Position Bias? | Notes & Safety Violations |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
+        ]
+    )
 
     for item in aci_results["detailed_results"]:
         bias_str = "YES (Bias Detected)" if item["position_bias_detected"] else "None (Consistent)"
@@ -277,7 +313,7 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
             "",
             "---",
             "",
-            "## 3. HealthBench Physician Rubric Validation Details",
+            "## 4. HealthBench Physician Rubric Validation Details",
             "",
             "| Item ID | Clinical Domain | Physician Gold Score | Judge Score | Physician Verdict | Judge Verdict | Concordance |",
             "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
@@ -285,9 +321,9 @@ def generate_markdown_report(aci_results: Dict[str, Any], hb_results: Dict[str, 
     )
 
     for item in hb_results["detailed_results"]:
-        agree_icon = "PASS (Concordant)" if item["agreement"] else "DISCORDANT"
+        agree_icon = "PASS (Concordant)" if item["agreement"] else "**DISCORDANT**"
         lines.append(
-            f"| `{item['item_id']}` | {item['domain']} | {item['physician_gold_score']:.1f} | {item['judge_score']:.1f} | {item['physician_verdict']} | {item['judge_verdict']} | **{agree_icon}** |"
+            f"| `{item['item_id']}` | {item['domain']} | {item['physician_gold_score']:.1f} | {item['judge_score']:.1f} | {item['physician_verdict']} | {item['judge_verdict']} | {agree_icon} |"
         )
 
     lines.extend(

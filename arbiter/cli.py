@@ -267,11 +267,19 @@ def validate_healthbench(
     table.add_column("Measured Value", style="magenta")
 
     table.add_row("Evaluated Items", str(summary["sample_size"]))
-    table.add_row("Pass/Fail Classification Accuracy", f"{summary['accuracy_pct']}%")
-    table.add_row(
-        "Cohen's Kappa (Inter-Rater Reliability)",
-        f"{summary['cohens_kappa']} ({summary['kappa_interpretation']})",
-    )
+    acc_str = f"{summary['accuracy_pct']}%"
+    if "accuracy_ci_95" in summary:
+        acc_str += f" [95% CI: {summary['accuracy_ci_95'][0]}% - {summary['accuracy_ci_95'][1]}%]"
+    table.add_row("Pass/Fail Classification Accuracy", acc_str)
+
+    kappa_str = f"{summary['cohens_kappa']}"
+    if "cohens_kappa_ci_95" in summary:
+        kappa_str += (
+            f" [95% CI: {summary['cohens_kappa_ci_95'][0]} - {summary['cohens_kappa_ci_95'][1]}]"
+        )
+    kappa_str += f" ({summary['kappa_interpretation']})"
+    table.add_row("Cohen's Kappa (Inter-Rater Reliability)", kappa_str)
+
     table.add_row(
         "Spearman Rank Correlation (rho)",
         f"{summary['spearman_rho']} (p={summary['spearman_p_value']:.4f})",

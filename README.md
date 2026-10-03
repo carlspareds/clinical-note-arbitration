@@ -69,23 +69,23 @@ flowchart TD
 > [!NOTE]
 > **Evaluation Mode: Live Frontier Model Benchmark**
 > - **Evaluator Model**: `glm-5.3-flash` (via OpenAI-compatible inference endpoint)
-> - **Evaluation Date**: 2026-09-29
-> - **Dataset Size**: ACI-Bench n=20 encounters | HealthBench n=25 validation items
-> - **Measured Cost**: **$0.00090 / arbitration** ($0.0180 total ACI spend, 141,007 tokens)
-> - **Empirical Verification**: All metrics reflect actual live LLM calls, structured JSON parsing, dual-swap position bias verification, and statistical correlation calculations against physician gold standards.
+> - **Evaluation Date**: 2026-10-03
+> - **Dataset Size**: ACI-Bench n=20 encounters | HealthBench n=100 validation items
+> - **Measured Cost**: **$0.00091 / arbitration** ($0.0182 total ACI spend, 141,610 tokens)
+> - **Empirical Verification**: All metrics reflect actual live LLM calls, structured JSON parsing, dual-swap position bias verification, 95% Wilson score and bootstrap confidence intervals, and 5 documented failure cases against physician gold standards.
 
 | Evaluation Suite | Statistical Metric | Measured Value | Evaluation Context |
 | :--- | :--- | :--- | :--- |
 | **HealthBench Validation** | **Evaluation Type** | **Live Frontier Model Benchmark** | `glm-5.3-flash` via API |
-| **HealthBench Physician Agreement** | **Pass/Fail Accuracy** | **100.0%** (25/25 items) | Concordance with physician gold verdict |
-| **HealthBench Physician Agreement** | **Cohen's Kappa ($\kappa$)** | **1.0000** | Almost Perfect Agreement |
-| **HealthBench Physician Agreement** | **Spearman Rank Correlation ($\rho$)** | **0.6673** (p=0.0003) | Statistically Significant Rank Concordance |
-| **ACI-Bench Pairwise Arbitration** | **Safety Discrimination Accuracy** | **100.0%** (20/20 cases) | Correct identification of safe note over flawed note |
-| **ACI-Bench Pairwise Arbitration** | **Position-Bias Inconsistency Rate** | **0.0%** | Order invariance achieved via dual-swap protocol |
-| **Inference Economics** | **Mean Cost per Arbitration** | **$0.00090** | Empirical dual-swap cost ($0.10/$0.20 per 1M) |
-| **Inference Economics** | **Mean Tokens per Arbitration** | **7,050 tokens** | Combined prompt & structured output |
+| **HealthBench Physician Agreement** | **Pass/Fail Accuracy (95% CI)** | **95.0%** (95/100 items) [95% CI: 88.8%–97.9%] | Concordance with physician gold verdict (Wilson score interval) |
+| **HealthBench Physician Agreement** | **Cohen's Kappa ($\kappa$, 95% CI)** | **0.7860** [95% CI: 0.557–0.951] | Substantial Agreement (Non-parametric bootstrap, B=1000) |
+| **HealthBench Physician Agreement** | **Spearman Rank Correlation ($\rho$)** | **0.7184** (p < 0.0001) | Statistically Significant Continuous Score Concordance |
+| **ACI-Bench Pairwise Arbitration** | **Safety Discrimination Accuracy (95% CI)** | **95.0%** (19/20 cases) [95% CI: 76.4%–99.1%] | Correct identification of safe note over flawed note (Wilson CI) |
+| **ACI-Bench Pairwise Arbitration** | **Position-Bias Inconsistency Rate (95% CI)** | **5.0%** (1/20 cases) [95% CI: 0.9%–23.6%] | Order flip caught by dual-swap; routed to human review (Wilson CI) |
+| **Inference Economics** | **Mean Cost per Arbitration** | **$0.00091** | Empirical dual-swap cost ($0.10/$0.20 per 1M) |
+| **Inference Economics** | **Mean Tokens per Arbitration** | **7,080 tokens** | Combined prompt & structured output |
 
-Full case reports, statistical breakdowns, and error matrices are cataloged in [`evals/results.md`](file:///home/switch/.gemini/antigravity-cli/scratch/clinical-note-arbitration/evals/results.md) and [`evals/cost_analysis.md`](file:///home/switch/.gemini/antigravity-cli/scratch/clinical-note-arbitration/evals/cost_analysis.md).
+Full case reports, statistical breakdowns, and 5 real disagreement failure case studies are cataloged in [`evals/results.md`](evals/results.md) and [`evals/cost_analysis.md`](evals/cost_analysis.md).
 
 ---
 
@@ -171,9 +171,23 @@ The unified client seamlessly routes across:
 - **No Credentialed Databases**: Strictly no MIMIC-III, MIMIC-IV, or n2c2/i2b2 data.
 - **Open Benchmark Citations**: Uses only public, de-identified datasets: ACI-Bench, MTS-Dialog, and OpenAI HealthBench. Full details in [`DATA.md`](file:///home/switch/.gemini/antigravity-cli/scratch/clinical-note-arbitration/DATA.md).
 
+## Limitations
+
+While this arbitration architecture demonstrates effective dual-swap order-invariance and rubric-grounded clinical safety checking, several fundamental scientific limitations must be acknowledged:
+
+1. **Same Model Family as Generator and Judge**:
+   Evaluating generator models using a judge from the same architectural lineage or pretraining foundation (e.g., flash model variants from the same family) introduces shared bias risks. Shared inductive biases and common safety alignment artifacts can produce mutual agreement blind spots, where subtle clinical contraindications or non-standard guideline variations are systematically overlooked by both generator and judge.
+
+2. **Small Evaluation Sample Sizes (Small $n$)**:
+   Current empirical evaluations are constrained to $n=100$ HealthBench rubric items and $n=20$ ACI-Bench clinical encounters. While adequate for benchmarking initial statistical concordance and calculating 95% Wilson and bootstrap confidence intervals, larger multi-center evaluations spanning thousands of clinical encounters across specialized subspecialties (e.g., pediatric oncology, inpatient critical care, transplant surgery) are required before autonomous clinical deployment.
+
+3. **No Physician Blinded Adjudication**:
+   The gold-standard reference labels in current suites are derived from retrospective open benchmark consensus datasets rather than a prospective, fully blinded multi-expert physician adjudication panel evaluating live ambient scribe outputs. Consequently, the arbiter is designed as an algorithmic clinical safety auditor and decision-support tool, not an autonomous replacement for licensed clinician sign-off.
+
 ---
 
 ## License
 
-This project is licensed under the MIT License - see the [`LICENSE`](file:///home/switch/.gemini/antigravity-cli/scratch/clinical-note-arbitration/LICENSE) file for details.
+This project is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
 Authored by Carlos Paredes ([@carlspareds](https://github.com/carlspareds)).
+

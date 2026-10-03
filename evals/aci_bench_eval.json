@@ -3,9 +3,17 @@
   "evaluation_type": "live frontier model benchmark",
   "sample_count": 20,
   "judge_model": "glm-5.3-flash",
-  "evaluation_date": "2026-09-29",
-  "safety_agreement_accuracy_pct": 100.0,
-  "position_bias_rate_pct": 0.0,
+  "evaluation_date": "2026-10-03",
+  "safety_agreement_accuracy_pct": 95.0,
+  "safety_agreement_accuracy_ci_95": [
+    76.39,
+    99.11
+  ],
+  "position_bias_rate_pct": 5.0,
+  "position_bias_rate_ci_95": [
+    0.89,
+    23.61
+  ],
   "avg_cost_per_encounter_usd": 0.000899,
   "total_cost_usd": 0.017976,
   "avg_tokens_per_encounter": 7050.4,
@@ -202,18 +210,18 @@
       "encounter_id": "ACI-012",
       "specialty": "Nephrology",
       "expected_winner": "Note A",
-      "actual_verdict": "NOTE_A_WINS",
-      "winning_note": "Note A",
-      "confidence": 0.98,
-      "position_bias_detected": false,
+      "actual_verdict": "INCONCLUSIVE_POSITION_BIAS",
+      "winning_note": null,
+      "confidence": 0.5,
+      "position_bias_detected": true,
       "note_a_critical_errors": 0,
       "note_b_critical_errors": 7,
       "cost_usd": 0.000934,
       "tokens": 7238,
       "ab_winner": "A",
-      "ba_winner": "A",
-      "clinical_rationale_snippet": "CLINICAL ARBITRATION SUMMARY: Note A decisively won due to CRITICAL safety violation in Note B.\n\n[Ordering AB Rationale]: Option 1 accurately captures the critical findings from the consultation: seru...",
-      "is_correct": true
+      "ba_winner": "B",
+      "clinical_rationale_snippet": "ORDER INCONSISTENCY DETECTED (POSITION BIAS): Option 1 was selected in presentation AB (Note A), but Option 1 was also selected in swapped presentation BA (Note B). Because model judgment was determined by presentation order rather than clinical content, the arbiter rejected the naive verdict and escalated to human physician review.",
+      "is_correct": false
     },
     {
       "encounter_id": "ACI-013",

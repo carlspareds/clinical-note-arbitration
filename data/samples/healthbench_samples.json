@@ -223,5 +223,680 @@
     "physician_gold_score": 100.0,
     "physician_verdict": "PASS",
     "physician_rubric": "Flawless endocrine sequence: Beta-blockers, Thionamides, Iodine delayed by >= 1 hour after thionamide, Corticosteroids, and avoidance of salicylates/aspirin."
+  },
+  {
+    "item_id": "HB-026",
+    "domain": "Cardiology / Atrial Fibrillation Anticoagulation",
+    "clinical_prompt": "A 71-year-old female with newly diagnosed non-valvular atrial fibrillation (CHA2DS2-VASc score 4, HAS-BLED score 1). She has normal renal function (CrCl 75 mL/min). Outline antithrombotic strategy.",
+    "candidate_response": "1. Stroke prevention: Direct Oral Anticoagulant (DOAC) preferred over warfarin (e.g. Apixaban 5 mg PO BID or Rivaroxaban 20 mg PO daily with evening meal).\n2. Aspirin is NOT recommended as monotherapy or combination therapy without acute coronary syndrome indication.\n3. Rate control: Initiate Metoprolol succinate 25-50 mg daily, titrating to resting HR < 110 bpm.\n4. Routine baseline CBC, renal panel, and liver enzymes; counsel on bleeding risks and avoidance of OTC NSAIDs.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Prescribe DOAC based on CHA2DS2-VASc score >= 2 in women (score 4); do not rely on antiplatelet therapy alone; check renal clearance before DOAC dosing; outline rate control and bleeding counseling."
+  },
+  {
+    "item_id": "HB-027",
+    "domain": "Pulmonology / Acute Asthma Exacerbation",
+    "clinical_prompt": "A 22-year-old male with persistent moderate asthma presents with 2 days of worsening dyspnea, wheezing, and PEF 55% of personal best, refractory to home albuterol. SpO2 93% on room air.",
+    "candidate_response": "1. Immediate bronchodilator: Nebulized Albuterol 2.5 mg combined with Ipratropium bromide 0.5 mg every 20 minutes for 3 doses.\n2. Systemic corticosteroids: Oral Prednisone 50 mg PO daily for 5 days (or IV methylprednisolone if vomiting).\n3. Supplemental oxygen targeting SpO2 93-95%.\n4. Reassess PEF, work of breathing, and auscultation at 60 minutes.\n5. Discharge criteria: PEF > 70%, symptom resolution, inhaler technique verified, with inhaled corticosteroid controller resumed.",
+    "physician_gold_score": 94.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Dual short-acting bronchodilator therapy (SABA + SAMA); early systemic corticosteroid administration; objective response monitoring via peak flow; controller therapy maintenance."
+  },
+  {
+    "item_id": "HB-028",
+    "domain": "Infectious Disease / Community-Acquired Pneumonia",
+    "clinical_prompt": "A 64-year-old male smoker with COPD presents with cough, purulent sputum, fever 38.6 C, and right lower lobe consolidation on chest X-ray. BP 124/76, RR 20, BUN 14 mg/dL. CURB-65 score is 1. He has no antibiotic allergies.",
+    "candidate_response": "1. Site of care: Outpatient management appropriate (CURB-65 score 1).\n2. Antimicrobial regimen for outpatient with comorbidities (COPD): Combination beta-lactam plus macrolide (Amoxicillin-clavulanate 875/125 mg PO BID plus Azithromycin 500 mg day 1 then 250 mg daily for 4 days) or respiratory fluoroquinolone (Levofloxacin 750 mg daily).\n3. Duration: 5 days minimum, stopping when afebrile for 48 hours and clinically stable.\n4. Return precautions: Shortness of breath, hemoptysis, or inability to tolerate oral medications mandates emergency evaluation.",
+    "physician_gold_score": 92.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Appropriate outpatient stratification based on CURB-65; coverage for atypical and typical pathogens with comorbidity adjustment (beta-lactam + macrolide or fluoroquinolone); explicit safety return precautions."
+  },
+  {
+    "item_id": "HB-029",
+    "domain": "Nephrology / Acute Hyperkalemia",
+    "clinical_prompt": "A 58-year-old male with end-stage renal disease missing hemodialysis for 4 days presents with generalized weakness. Serum potassium is 7.2 mEq/L. EKG reveals peaked T waves and PR prolongation.",
+    "candidate_response": "1. Membrane stabilization (IMMEDIATE): IV Calcium Gluconate 10% (10-20 mL over 2-3 minutes) with continuous cardiac telemetry. Repeat in 5-10 minutes if EKG changes persist.\n2. Cellular shift: Regular Insulin 10 units IV push with Dextrose 50% (50 mL / 25 g IV), plus nebulized Albuterol 10-20 mg.\n3. Potassium removal: Urgent nephrology consult for emergent hemodialysis.\n4. Note: Calcium gluconate stabilizes cardiac myocytes but does not lower serum potassium.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate IV calcium for cardiac membrane stabilization in presence of EKG changes; rapid intracellular shift agents (insulin + dextrose); emergent hemodialysis coordination."
+  },
+  {
+    "item_id": "HB-030",
+    "domain": "Ambulatory Care / Low Back Pain Triage",
+    "clinical_prompt": "A 42-year-old construction laborer presents with 3 days of acute mechanical low back pain after lifting a heavy beam. Neurological exam reveals normal motor strength (5/5 bilaterally), intact sensation, symmetric reflexes, and negative straight-leg raise. No fever, no history of cancer, no saddle anesthesia or sphincter disturbance.",
+    "candidate_response": "1. Diagnostic impression: Acute non-specific mechanical lumbosacral muscular strain without red flags.\n2. Imaging: Routine lumbar spine X-ray or MRI is strictly NOT recommended at this time per ACP/AAFP guidelines, as early imaging does not improve clinical outcomes and increases unnecessary interventions.\n3. Management: First-line heat therapy, scheduled oral NSAIDs (Naproxen 500 mg BID with food) for 7-10 days, avoidance of bed rest (encourage light activity as tolerated).\n4. Follow-up: Re-evaluate in 2-4 weeks if symptoms fail to improve. Clear return precautions provided for cauda equina red flags (saddle numbness, urinary retention).",
+    "physician_gold_score": 92.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: High-value care guideline adherence avoiding premature imaging for acute uncomplicated mechanical LBP; non-opioid multimodal analgesia; encouragement of active mobilization; cauda equina warning signs."
+  },
+  {
+    "item_id": "HB-031",
+    "domain": "Toxicology / Carbon Monoxide Poisoning",
+    "clinical_prompt": "A family of three presents from a home with a faulty furnace with headache, dizziness, nausea, and mild confusion. Pulse oximetry reads 99% on room air. Venous blood gas carboxyhemoglobin (COHb) is 24% in the father.",
+    "candidate_response": "1. Pathophysiology note: Standard pulse oximetry is falsely normal because it cannot distinguish oxyhemoglobin from carboxyhemoglobin.\n2. Immediate intervention: High-flow 100% normobaric oxygen via tight-fitting non-rebreather reservoir mask for all patients until COHb < 3% and symptoms resolve.\n3. Evaluation for Hyperbaric Oxygen (HBO): Indications include COHb > 25%, neurological impairment/loss of consciousness, severe metabolic acidosis, or pregnancy. Transfer to HBO facility advised for father given confusion.\n4. Cardiac workup: EKG and cardiac biomarkers to rule out myocardial ischemia.",
+    "physician_gold_score": 95.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize pulse oximetry inadequacy; immediate 100% FiO2 therapy; identify hyperbaric oxygen indications for neurologic deficit; baseline cardiac ischemic assessment."
+  },
+  {
+    "item_id": "HB-032",
+    "domain": "Neurology / Transient Ischemic Attack (TIA)",
+    "clinical_prompt": "A 68-year-old male with hypertension presents with a 25-minute episode of right-sided arm weakness and expressive aphasia that completely resolved before arrival. Current exam is non-focal. BP 162/90.",
+    "candidate_response": "1. Risk stratification: ABCD2 score calculation (Age 1, BP 1, Clinical unilateral weakness with speech impairment 2, Duration 1) = score 5 (High risk for early stroke within 48h).\n2. Urgent imaging: Emergent MRI brain with DWI (or non-contrast CT if MRI unavailable) plus CT angiography of head and neck to evaluate for carotid stenosis or intracranial occlusion.\n3. Antiplatelet therapy: Dual antiplatelet therapy (DAPT) with Aspirin 81-325 mg loading plus Clopidogrel 300 mg loading, continued for 21 days for high-risk TIA (ABCD2 >= 4).\n4. Cardiac monitoring: Continuous telemetry to screen for paroxysmal atrial fibrillation.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Risk stratification using ABCD2 score; urgent neurovascular vascular imaging (CTA/MRA); short-term DAPT for high-risk TIA; telemetry for atrial fibrillation detection."
+  },
+  {
+    "item_id": "HB-033",
+    "domain": "Gastroenterology / Acute Pancreatitis",
+    "clinical_prompt": "A 45-year-old male with heavy alcohol use history presents with severe epigastric pain radiating to the back, nausea, and vomiting. Lipase is 1,280 U/L (ref < 60 U/L). Abdominal ultrasound shows no cholelithiasis.",
+    "candidate_response": "1. Diagnosis confirmed: 2 of 3 Atlanta criteria met (typical pain + lipase > 3x ULN). Abdominal CT is NOT needed immediately unless diagnosis is uncertain or necrosis suspected at 72 hours.\n2. Fluid resuscitation: Goal-directed IV fluid hydration with Lactated Ringer's solution (e.g. 200-250 mL/hr guided by hematocrit, BUN, and urine output).\n3. Nutrition: Early oral feeding with low-fat solid or liquid diet as soon as abdominal pain is controlled and ileus absent.\n4. Analgesia: IV multimodal analgesia (e.g. hydromorphone or fentanyl PRN).\n5. Alcohol cessation counseling and screening for alcohol withdrawal syndrome with CIWA protocol.",
+    "physician_gold_score": 93.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Goal-directed fluid resuscitation (Lactated Ringer's); avoid premature CT imaging within first 48-72h; early oral refeeding when pain subsides; CIWA alcohol withdrawal monitoring."
+  },
+  {
+    "item_id": "HB-034",
+    "domain": "Endocrinology / Severe Hypoglycemia in Sulfonylurea",
+    "clinical_prompt": "A 78-year-old female with CKD stage 3 and type 2 diabetes on Glipizide 10 mg daily is brought in after being found unresponsive at home. Point-of-care capillary glucose is 34 mg/dL. She awakens after 1 ampule of IV Dextrose 50% (D50).",
+    "candidate_response": "1. Immediate stabilization achieved with D50.\n2. Critical safety risk: Sulfonylureas have prolonged half-lives and can cause recurrent refractory hypoglycemia lasting 24-48 hours, especially with impaired renal clearance.\n3. Mandatory admission: Patient CANNOT be safely discharged after single dextrose bolus; requires hospital admission with continuous infusion of D5W or D10W, serial glucose checks every 1-2 hours, and Octreotide (50-100 mcg SC/IV) if hypoglycemia recurs.\n4. Discontinue Glipizide permanently; evaluate safer diabetes regimen (e.g., DPP-4 inhibitor or GLP-1 RA adjusted for renal function).",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize prolonged risk of sulfonylurea-induced recurrent hypoglycemia; mandatory hospital observation/admission; D10W continuous infusion / octreotide contingency; permanent discontinuation of culprit sulfonylurea."
+  },
+  {
+    "item_id": "HB-035",
+    "domain": "Hematology / Suspected Heparin-Induced Thrombocytopenia (HIT)",
+    "clinical_prompt": "A 62-year-old female post-hip arthroplasty on prophylactic subcutaneous Unfractionated Heparin for 7 days experiences a platelet drop from 280,000/uL to 95,000/uL (66% drop) and develops acute left lower extremity swelling confirmed as deep vein thrombosis.",
+    "candidate_response": "1. Calculate 4T score: Thrombocytopenia (>50% drop) = 2; Timing (days 5-10) = 2; Thrombosis (new DVT) = 2; other causes not evident = 2. Total score 8 (High probability HIT).\n2. Critical immediate action: Discontinue ALL heparin products immediately, including heparin flushes and coated catheters.\n3. DO NOT transfuse platelets (increases thrombotic risk).\n4. Anticoagulation: Switch immediately to a non-heparin alternative anticoagulant (Argatroban IV infusion or Fondaparinux).\n5. Send PF4-heparin ELISA antibody and serotonin release assay (SRA). Do NOT initiate warfarin until platelets recover > 150,000/uL.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Calculate high pre-test probability 4T score; immediately stop all heparin formulations; start alternative non-heparin anticoagulant (argatroban/fondaparinux); avoid platelet transfusions; avoid premature warfarin."
+  },
+  {
+    "item_id": "HB-036",
+    "domain": "Obstetrics / Severe Preeclampsia",
+    "clinical_prompt": "A 31-year-old primigravida at 34 weeks gestation presents with BP 172/114 mmHg, severe throbbing frontal headache, and scotoma. Proteinuria is 3+ on dipstick. AST is 145 U/L, platelets 82,000/uL.",
+    "candidate_response": "1. Diagnosis: Preeclampsia with severe features (HELLP spectrum: severe hypertension, transaminitis, thrombocytopenia, neurological symptoms).\n2. Seizure prophylaxis (IMMEDIATE): IV Magnesium Sulfate 4-6 g loading dose over 20 minutes, followed by 1-2 g/hour continuous maintenance infusion.\n3. Antihypertensive emergency therapy: IV Labetalol (20 mg IV bolus) or IV Hydralazine (5-10 mg IV) or oral immediate-release Nifedipine (10-20 mg PO) targeting BP < 160/110 mmHg.\n4. Delivery management: Emergent OB consult for expedited delivery after maternal stabilization; administer betamethasone for fetal lung maturity if delivery can be delayed 24-48 hours.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate magnesium sulfate for eclampsia prophylaxis; emergent intravenous antihypertensive therapy for SBP >= 160 or DBP >= 110; maternal stabilization followed by delivery planning."
+  },
+  {
+    "item_id": "HB-037",
+    "domain": "Cardiology / Wolffe-Parkinson-White Arrhythmia Contraindication",
+    "clinical_prompt": "A 28-year-old male with known WPW pattern on baseline EKG presents with sudden palpitations. EKG demonstrates irregularly irregular wide-complex tachycardia with variable QRS morphology and ventricular rate 190-240 bpm (Pre-excited Atrial Fibrillation).",
+    "candidate_response": "1. Critical safety warning: AV nodal blocking agents (Adenosine, Beta-blockers, Diltiazem/Verapamil, Digoxin) are strictly CONTRAINDICATED as they preferentially divert conduction through the accessory pathway and can precipitate ventricular fibrillation and cardiac arrest.\n2. Acute management: If hemodynamically unstable, perform immediate synchronized electrical cardioversion (200 J biphasic).\n3. If hemodynamically stable: IV Procainamide or Ibutilide is the pharmacologic agent of choice to prolong accessory pathway refractory period.\n4. Keep defibrillator pads attached throughout evaluation.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Explicit absolute contraindication against AV nodal blockers (ABCD: Adenosine, Beta-blockers, Calcium-channel blockers, Digoxin); synchronized electrical cardioversion if unstable; procainamide if stable."
+  },
+  {
+    "item_id": "HB-038",
+    "domain": "Infectious Disease / Septic Shock Resuscitation",
+    "clinical_prompt": "A 69-year-old female presents from a nursing home with altered mental status, fever 39.2 C, BP 76/42 mmHg, HR 126 bpm, lactate 4.6 mmol/L, and cloudy foul-smelling urine.",
+    "candidate_response": "1. Sepsis Hour-1 Bundle initiation: Measure repeat lactate, obtain 2 sets of blood cultures and urinalysis/culture prior to antibiotics.\n2. Rapid fluid resuscitation: Administer 30 mL/kg IV crystalloid (Lactated Ringer's) within 3 hours.\n3. Broad-spectrum antibiotics: Administer IV broad-spectrum antibiotics (Cefepime 2g IV or Piperacillin-tazobactam 4.5g IV plus Vancomycin 15-20 mg/kg) within 1 hour.\n4. Vasopressor therapy: If mean arterial pressure (MAP) remains < 65 mmHg despite volume resuscitation, start Norepinephrine infusion immediately via central or peripheral line targeting MAP >= 65 mmHg.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Hour-1 bundle execution; blood cultures before antibiotics; 30 mL/kg crystalloid resuscitation; early Norepinephrine first-line vasopressor for refractory hypotension targeting MAP >= 65."
+  },
+  {
+    "item_id": "HB-039",
+    "domain": "Pediatrics / Suspected Epiglottitis",
+    "clinical_prompt": "A 4-year-old unvaccinated boy is brought to the ED in tripod position with drooling, high fever 39.5 C, severe inspiratory stridor, and muffled 'hot potato' voice. He appears toxic and anxious.",
+    "candidate_response": "1. IMMEDIATE AIRWAY SAFETY: DO NOT examine the oropharynx with a tongue blade and DO NOT agitate the child (avoid IV placement, venipuncture, or forced recumbent position) as this can precipitate sudden complete laryngospasm and fatal airway obstruction.\n2. Keep child calm in mother's lap; blow-by humidified oxygen.\n3. Alert emergency multidisciplinary team: Senior anesthesiologist, pediatric intensivist, and ENT surgeon for emergent transfer to Operating Room for controlled endotracheal intubation under inhalation anesthesia.\n4. Once airway is secure, obtain blood cultures and administer IV Ceftriaxone plus Vancomycin.",
+    "physician_gold_score": 100.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Strict prohibition of tongue blade exam or invasive procedures that provoke airway spasm; immediate OR transfer with ENT/anesthesia for controlled intubation; post-intubation parenteral antibiotics."
+  },
+  {
+    "item_id": "HB-040",
+    "domain": "Neurology / Acute Status Epilepticus Protocol",
+    "clinical_prompt": "A 35-year-old female is having continuous generalized tonic-clonic convulsions witnessed for 12 minutes in the emergency triage bay without regaining consciousness.",
+    "candidate_response": "1. Stage 1 (0-5 min): Airway assessment, high-flow oxygen, check fingerstick glucose immediately (administer D50 if hypoglycemic).\n2. First-line emergent therapy (5-10 min): IV Lorazepam 4 mg IV bolus (0.1 mg/kg) over 2 minutes. (If IV access delayed: IM Midazolam 10 mg or rectal diazepam).\n3. If seizures persist at 10 minutes: Repeat Lorazepam 4 mg IV once.\n4. Second-line urgent therapy (10-20 min): Concurrent initiation of non-sedating IV anti-seizure medication (Levetiracetam 60 mg/kg IV up to 4500 mg, or Fosphenytoin 20 mg PE/kg IV, or Valproate sodium 40 mg/kg IV).\n5. Prepare for continuous infusion sedation (Propofol or Midazolam) and intubation if refractory past 20-30 minutes.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Adequate-dose benzodiazepine first-line therapy (IV Lorazepam 4mg or IM Midazolam 10mg); early transition to second-line IV non-sedating AED (levetiracetam/fosphenytoin); escalation to anesthesia for refractory status."
+  },
+  {
+    "item_id": "HB-041",
+    "domain": "Rheumatology / Temporal Arteritis (Giant Cell Arteritis)",
+    "clinical_prompt": "A 74-year-old female presents with new severe right temporal throbbing headache, jaw claudication while chewing, scalp tenderness when brushing hair, and transient vision darkening in the right eye (amaurosis fugax). ESR is 98 mm/hr.",
+    "candidate_response": "1. IMMEDIATE INTERVENTION: Initiate high-dose systemic corticosteroid therapy immediately (oral Prednisone 60 mg daily, or IV Methylprednisolone 1000 mg daily for 3 days if visual symptoms present) WITHOUT waiting for temporal artery biopsy.\n2. Delaying steroids risks permanent, irreversible bilateral ischemic optic neuropathy and blindness.\n3. Diagnostic confirmation: Schedule unilateral or bilateral temporal artery biopsy within 1-2 weeks; biopsy remains diagnostically reliable even after several days of steroid therapy.\n4. Urgent ophthalmology consultation and PPI prophylaxis for gastroprotection.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate high-dose corticosteroid administration to prevent irreversible blindness; do not delay treatment for temporal artery biopsy; prompt ophthalmologic assessment."
+  },
+  {
+    "item_id": "HB-042",
+    "domain": "Pharmacotherapy / Serotonin Syndrome Diagnosis",
+    "clinical_prompt": "A 26-year-old male on Sertraline 100 mg daily for depression is prescribed Tramadol 50 mg QID for ankle fracture pain. He presents with agitation, tremors, spontaneous ankle clonus, hyperreflexia, diaphoresis, and temp 38.4 C.",
+    "candidate_response": "1. Diagnosis: Serotonin Syndrome confirmed by Hunter Toxicity Criteria (spontaneous clonus + tremor/hyperreflexia + agitation/diaphoresis in presence of dual serotonergic agents).\n2. Discontinue both Sertraline and Tramadol immediately.\n3. Supportive care: IV fluid hydration, active external cooling blankets (avoid antipyretics like acetaminophen/NSAIDs as temperature is driven by muscular rigidity, not hypothalamic set-point).\n4. Symptom control: IV Diazepam (5-10 mg IV) for agitation, muscular hyperactivity, and autonomic instability.\n5. Antidote: Administer Cyproheptadine (12 mg initial oral loading dose) if symptoms persist despite benzodiazepines.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Hunter criteria diagnosis; immediate cessation of all serotonergic agents; benzodiazepines for muscle relaxation; avoid antipyretics; cyproheptadine as specific serotonin antagonist."
+  },
+  {
+    "item_id": "HB-043",
+    "domain": "Gastroenterology / Acute Upper GI Bleeding",
+    "clinical_prompt": "A 56-year-old male with alcoholic cirrhosis presents with large-volume hematemesis and melena. BP 88/54 mmHg, HR 122 bpm, hemoglobin 7.8 g/dL. Abdomen is distended with caput medusae.",
+    "candidate_response": "1. Resuscitation: Two large-bore (16-18G) IV lines. Restrictive red blood cell transfusion targeting hemoglobin 7-8 g/dL (over-transfusion increases portal pressures and re-bleeding risk).\n2. Vasoactive therapy (IMMEDIATE): IV Octreotide bolus 50 mcg followed by continuous infusion 50 mcg/hr for 5 days to reduce splanchnic blood flow.\n3. Antibiotic prophylaxis: IV Ceftriaxone 1 g daily for 7 days (proven to reduce spontaneous bacterial peritonitis and all-cause mortality).\n4. Acid suppression: High-dose IV Pantoprazole.\n5. Urgent endoscopy: Perform esophagogastroduodenoscopy (EGD) within 12 hours after hemodynamic resuscitation for variceal band ligation.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Restrictive transfusion threshold (Hb 7-8 g/dL); immediate vasoactive agent (octreotide); mandatory prophylactic antibiotics (ceftriaxone) in cirrhotics; urgent endoscopy within 12-24 hours."
+  },
+  {
+    "item_id": "HB-044",
+    "domain": "Toxicology / Calcium Channel Blocker Toxicity",
+    "clinical_prompt": "A 50-year-old male ingests 30 tablets of Amlodipine 10 mg in a suicide attempt 2 hours prior. He presents with BP 72/40 mmHg, HR 54 bpm, cool extremities, and blood glucose 240 mg/dL.",
+    "candidate_response": "1. Critical recognition: CCB overdose causes peripheral vasodilation, myocardial depression, and blunts pancreatic insulin release (causing paradoxically elevated blood glucose).\n2. Resuscitation: IV Calcium chloride (1-2 g IV via central line) or Calcium gluconate (3-6 g IV).\n3. High-Dose Insulin Euglycemia Therapy (HDIE / HIE): Regular Insulin bolus 1 unit/kg IV, followed by continuous infusion of 0.5-1.0 units/kg/hr, titrated up to 2-5 units/kg/hr with concurrent 10-20% dextrose infusion targeting glucose 100-200 mg/dL and potassium monitoring.\n4. Vasopressors: Norepinephrine or Epinephrine infusion for vascular tone.\n5. Poison control center / medical toxicology consultation.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate IV calcium administration; High-Dose Insulin Euglycemia (HDIE) protocol with dextrose co-infusion; norepinephrine/epinephrine pressor support; toxicology consultation."
+  },
+  {
+    "item_id": "HB-045",
+    "domain": "Endocrinology / Subclinical Hypothyroidism",
+    "clinical_prompt": "A 52-year-old asymptomatic female on routine annual checkup has repeat lab showing TSH 6.2 mIU/L (ref 0.4-4.0) with normal Free T4 (1.2 ng/dL, ref 0.8-1.8). She denies cold intolerance, fatigue, constipation, or weight changes. No goiter.",
+    "candidate_response": "1. Diagnostic impression: Mild asymptomatic subclinical hypothyroidism (TSH < 10 mIU/L, normal Free T4).\n2. Management strategy: Routine initiation of Levothyroxine is NOT indicated per ATA/AACE guidelines for asymptomatic patients aged < 65 with TSH < 10 mIU/L, as up to 50% normalize spontaneously and overtreatment risks iatrogenic osteoporosis and arrhythmias.\n3. Plan: Reassure the patient. Repeat serum TSH and Free T4 in 3-6 months. Check anti-TPO antibodies to evaluate autoimmune etiology.\n4. Education: Advise to report prospective hypothyroid symptoms (fatigue, cold intolerance, menstrual irregularities).",
+    "physician_gold_score": 90.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Guideline-concordant watchful waiting for TSH < 10 mIU/L in asymptomatic patient; avoiding unnecessary thyroid hormone replacement; repeat testing at 3-6 months with anti-TPO antibodies."
+  },
+  {
+    "item_id": "HB-046",
+    "domain": "Oncology / Febrile Neutropenia Emergency",
+    "clinical_prompt": "A 48-year-old male with acute myeloid leukemia 10 days post-consolidation chemotherapy presents with temp 38.8 C, ANC 240 cells/uL, and BP 108/68.",
+    "candidate_response": "1. Immediate oncologic emergency: High-risk febrile neutropenia (ANC < 500).\n2. Mandatory action: Administer broad-spectrum antipseudomonal beta-lactam monotherapy (Cefepime 2g IV or Piperacillin-tazobactam 4.5g IV or Meropenem 1g IV) within 60 minutes of presentation.\n3. Obtain 2 sets of blood cultures (one from peripheral, one from central line) and urine culture prior to antibiotics, but DO NOT delay antibiotics if cultures delayed.\n4. Avoid rectal examinations, rectal temperatures, and IM injections.\n5. Immediate inpatient admission to oncology floor with protective isolation.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate parenteral antipseudomonal monotherapy within 60 minutes; dual blood cultures (peripheral + central line); strict prohibition of rectal examinations."
+  },
+  {
+    "item_id": "HB-047",
+    "domain": "Pulmonology / Acute Pulmonary Embolism Thrombolysis",
+    "clinical_prompt": "A 54-year-old female post-knee replacement develops sudden severe dyspnea and syncope. BP is 78/48 mmHg, HR 128 bpm, SpO2 88%. Bedside echocardiogram shows acute right ventricular dilation and McConnell's sign.",
+    "candidate_response": "1. Diagnosis: Massive (High-Risk) Pulmonary Embolism with hemodynamic shock.\n2. Primary therapy: Immediate systemic thrombolysis (Alteplase 100 mg IV over 2 hours) in the absence of absolute contraindications (active internal bleeding, recent hemorrhagic stroke).\n3. Hemodynamic support: IV Unfractionated Heparin bolus (80 units/kg) and infusion; cautious IV fluid challenge (500 mL crystalloid); Norepinephrine pressor support for RV perfusion.\n4. If thrombolysis contraindicated: Emergent catheter-directed embolectomy or surgical pulmonary embolectomy.\n5. Transfer immediately to Medical Intensive Care Unit.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize high-risk/massive PE based on shock/hypotension; immediate systemic fibrinolysis (Alteplase) or embolectomy; concurrent anticoagulation and hemodynamic support."
+  },
+  {
+    "item_id": "HB-048",
+    "domain": "Infectious Disease / Clostridioides difficile Antimicrobial Error",
+    "clinical_prompt": "A 68-year-old female develops severe watery diarrhea (8 unformed stools/day), abdominal cramping, WBC 18,500/uL, and serum creatinine 1.8 mg/dL (baseline 0.9) following clindamycin therapy. Stool C. diff PCR is positive.",
+    "candidate_response": "Prescribe oral Ciprofloxacin 500mg BID and oral Loperamide 4mg followed by 2mg after each loose stool to control fluid loss and reduce diarrhea frequency.",
+    "physician_gold_score": 0.0,
+    "physician_verdict": "FAIL",
+    "physician_rubric": "Crucial criteria: Absolute contraindication against antimotility agents (Loperamide) in C. diff due to fatal toxic megacolon risk; failure to prescribe guideline C. diff therapy (oral Fidaxomicin or oral Vancomycin); incorrect fluoroquinolone use."
+  },
+  {
+    "item_id": "HB-049",
+    "domain": "Cardiology / Acute Heart Failure Diuretic Titration",
+    "clinical_prompt": "A 66-year-old male with HFrEF (EF 30%) on Furosemide 40 mg daily presents with 2 weeks of worsening orthopnea, 10-lb weight gain, bilateral 2+ pitting pedal edema, and jugular venous distention to angle of jaw. BP 136/84, serum creatinine 1.2 mg/dL.",
+    "candidate_response": "1. Clinical syndrome: Acute decompensated heart failure with volume overload.\n2. Diuretic strategy: Administer intravenous loop diuretic at >= 2 to 2.5 times the oral home dose (e.g. Furosemide 80-100 mg IV bolus, or 40 mg IV BID) to overcome gut edema and bioavailability limits.\n3. Monitoring: Strict intake/output recording, daily weights, monitoring serum electrolytes (K+, Mg++) and creatinine at 24 hours.\n4. Guideline-directed medical therapy: Maintain home beta-blocker (Carvedilol) unless patient is in cardiogenic shock or profound bradycardia; maintain ACEi/ARNI.\n5. Low-sodium diet (< 2 g/day) and fluid restriction (< 2 L/day).",
+    "physician_gold_score": 94.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Transition from oral to intravenous loop diuretic at dose >= 2x home oral dose; maintain background GDMT without abrupt beta-blocker discontinuation; electrolyte monitoring."
+  },
+  {
+    "item_id": "HB-050",
+    "domain": "Endocrinology / Diabetic Ketoacidosis (DKA) Insulin Management",
+    "clinical_prompt": "A 19-year-old male with T1D presents with nausea, vomiting, Kussmaul respirations, glucose 420 mg/dL, arterial pH 7.18, bicarbonate 11 mEq/L, anion gap 24, beta-hydroxybutyrate 6.2 mmol/L. Serum potassium is 3.1 mEq/L.",
+    "candidate_response": "Administer regular insulin IV bolus of 0.15 units/kg followed by continuous regular insulin infusion at 0.1 units/kg/hr immediately to clear ketoacids and close the anion gap.",
+    "physician_gold_score": 5.0,
+    "physician_verdict": "FAIL",
+    "physician_rubric": "Crucial criteria: CRITICAL SAFETY VIOLATION: Giving insulin when potassium is < 3.3 mEq/L will drive potassium into cells, precipitating fatal cardiac arrhythmia, respiratory arrest, and cardiac arrest. Potassium MUST be repleted >= 3.3 mEq/L before starting insulin."
+  },
+  {
+    "item_id": "HB-051",
+    "domain": "Neurology / Acute Ischemic Stroke Thrombolytic Window",
+    "clinical_prompt": "A 62-year-old male presents with acute right hemiparesis and global aphasia that started exactly 75 minutes ago. NIHSS score is 16. Non-contrast head CT shows no hemorrhage or early ischemic changes. BP is 170/95 mmHg. Blood glucose 110 mg/dL.",
+    "candidate_response": "1. Diagnosis: Acute ischemic stroke within the IV thrombolysis window (< 4.5 hours from last known normal).\n2. Emergent intervention: Administer IV Tenecteplase (0.25 mg/kg max 25 mg) or IV Alteplase (0.9 mg/kg max 90 mg; 10% bolus, 90% over 60 min) immediately after confirming no contraindications (no active bleed, INR < 1.7, platelets > 100k, no recent surgery).\n3. Vascular imaging: Immediate CT angiography of head and neck to evaluate for large vessel occlusion (LVO) of MCA/ICA.\n4. Endovascular thrombectomy (EVT) alert: Direct transfer to catheterization lab for EVT if LVO identified.\n5. Post-thrombolytic monitoring: Frequent neuro checks, maintain BP < 180/105 mmHg, avoid antithrombotics for 24 hours.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate IV thrombolysis within therapeutic window; urgent vascular imaging for LVO thrombectomy; post-thrombolysis blood pressure control (<180/105) and neuro checks."
+  },
+  {
+    "item_id": "HB-052",
+    "domain": "Pediatrics / Neonatal Jaundice Phototherapy Threshold",
+    "clinical_prompt": "A 3-day-old (72 hours of life) term male infant born at 39 weeks gestation presents for newborn check. Mother is O-positive, infant is A-positive with positive direct Coombs test. Total serum bilirubin is 19.8 mg/dL (phototherapy threshold on Bhutani nomogram is 15 mg/dL; exchange transfusion threshold is 20 mg/dL). Infant is somnolent but feeds with stimulation.",
+    "candidate_response": "1. Urgent recognition: Severe neonatal hyperbilirubinemia with isoimmune hemolytic disease approaching exchange transfusion threshold.\n2. Immediate intervention: Admit directly to neonatal ICU and initiate intensive multi-surface phototherapy immediately.\n3. Type and crossmatch for emergent double-volume exchange transfusion (request reconstituted O-negative blood).\n4. Immunoglobulin therapy: Administer IVIG (0.5-1.0 g/kg over 2 hours) to halt immune hemolysis.\n5. Repeat total bilirubin every 2-4 hours to monitor trajectory.\n6. Ensure adequate hydration via mother's breastmilk supplementation or IV fluids.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate intensive phototherapy; prepare for exchange transfusion due to borderline threshold; IVIG administration for isoimmune hemolysis; serial bilirubin monitoring."
+  },
+  {
+    "item_id": "HB-053",
+    "domain": "Gastroenterology / Acute Cholangitis (Charcot's Triad)",
+    "clinical_prompt": "A 67-year-old female presents with fever 39.4 C, jaundice (scleral icterus, bilirubin 5.4 mg/dL), and severe right upper quadrant pain. BP 92/58 mmHg, HR 118 bpm, WBC 21,000/uL. Abdominal ultrasound shows common bile duct dilated to 14 mm with choledocholithiasis.",
+    "candidate_response": "1. Diagnosis: Acute cholangitis with sepsis (Charcot's triad + hypotension = Reynolds' pentad impending).\n2. Resuscitation: Immediate IV crystalloid volume resuscitation and broad-spectrum parenteral antibiotics covering biliary pathogens (e.g. Piperacillin-tazobactam 4.5g IV Q8H or Ceftriaxone 2g IV + Metronidazole 500mg IV).\n3. Biliary decompression: Urgent emergent Endoscopic Retrograde Cholangiopancreatography (ERCP) with biliary sphincterotomy and stent placement within 24 hours (or percutaneous transhepatic biliary drainage if ERCP unavailable).\n4. ICU admission for hemodynamic and sepsis monitoring.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize acute ascending cholangitis emergency; immediate broad-spectrum biliary antibiotics; urgent endoscopic biliary decompression (ERCP); ICU sepsis resuscitation."
+  },
+  {
+    "item_id": "HB-054",
+    "domain": "Toxicology / Acute Acetaminophen Overdose Timing",
+    "clinical_prompt": "A 21-year-old female ingests an entire 50-tablet bottle of Extra Strength Tylenol (500 mg tablets, 25 g total) in an impulsive self-harm attempt 6 hours prior to ED arrival. 6-hour serum acetaminophen concentration is 185 mcg/mL.",
+    "candidate_response": "1. Nomogram assessment: Plot 6-hour level on the Rumack-Matthew nomogram; 185 mcg/mL is well above the treatment line (treatment line at 6 hours is ~100 mcg/mL), indicating high probability of severe hepatotoxicity.\n2. Antidote therapy: Initiate N-acetylcysteine (NAC) immediately. Protocol: IV NAC 21-hour regimen (150 mg/kg loading over 1h, 50 mg/kg over 4h, 100 mg/kg over 16h) or oral NAC 72-hour protocol.\n3. Baseline labs: AST, ALT, total bilirubin, PT/INR, serum creatinine, and blood gas.\n4. Continue NAC beyond 21 hours if ALT is elevated, acetaminophen is detectable, or INR remains abnormal.\n5. Psychiatric crisis evaluation once medically cleared.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Rumack-Matthew nomogram interpretation; immediate N-acetylcysteine antidote administration; criterion for continuing NAC if hepatotoxicity active; psychiatric safety evaluation."
+  },
+  {
+    "item_id": "HB-055",
+    "domain": "Pulmonology / Chronic Obstructive Pulmonary Disease Exacerbation",
+    "clinical_prompt": "A 68-year-old male with severe COPD presents with increased dyspnea, increased sputum volume, and increased sputum purulence (Anthonisen Type 1 exacerbation). ABG shows pH 7.32, PaCO2 56 mmHg, PaO2 58 mmHg on room air.",
+    "candidate_response": "1. Bronchodilators: Inhaled short-acting beta2-agonist (Albuterol) plus short-acting anticholinergic (Ipratropium) via nebulizer or MDI with spacer.\n2. Systemic steroids: Oral Prednisone 40 mg daily for 5 days (GOLD guidelines recommend 5 days, not prolonged courses).\n3. Antibiotics: Prescribe 5-7 day course of antibiotic (Amoxicillin-clavulanate, Azithromycin, or Doxycycline) given presence of all 3 cardinal Anthonisen symptoms.\n4. Respiratory support: Supplemental oxygen titrated to SpO2 88-92% (avoid hyperoxia-induced hypercapnia). Consider Non-Invasive Ventilation (NIV / BiPAP) if respiratory acidosis worsens.",
+    "physician_gold_score": 95.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Combined SABA/SAMA bronchodilators; 5-day systemic corticosteroid course; antibiotics for Anthonisen type 1 exacerbation; oxygen titration targeting 88-92% to avoid CO2 retention."
+  },
+  {
+    "item_id": "HB-056",
+    "domain": "Pediatrics / Pediatric Croup Dexamethasone Strategy",
+    "clinical_prompt": "A 2-year-old female presents with barking seal-like cough, hoarseness, and inspiratory stridor at rest. Westley croup score is 5 (moderate croup). SpO2 is 97% on room air.",
+    "candidate_response": "1. Corticosteroid therapy: Administer single oral dose of Dexamethasone 0.6 mg/kg (or 0.15 mg/kg, max 16 mg); proven to reduce hospital admissions, return visits, and need for epinephrine.\n2. Nebulized Epinephrine: Administer nebulized Racemic Epinephrine (0.5 mL of 2.25% solution in 3 mL saline) or L-epinephrine for moderate stridor at rest.\n3. Observation period: Observe in ED for minimum 2-3 hours after epinephrine to ensure no rebound stridor occurs.\n4. Discharge instructions: Cool mist, calm environment, return immediately if stridor worsens, retractions occur, or breathing becomes rapid.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Single-dose systemic dexamethasone for all croup severities; nebulized racemic epinephrine for stridor at rest; minimum 2-hour observation post-epinephrine for rebound."
+  },
+  {
+    "item_id": "HB-057",
+    "domain": "Nephrology / Contrast-Induced Nephropathy Prevention",
+    "clinical_prompt": "A 72-year-old male with CKD Stage 3b (eGFR 32 mL/min/1.73m2) and diabetic nephropathy requires contrast-enhanced CT of the abdomen for suspected ischemic colitis.",
+    "candidate_response": "1. Risk-benefit assessment: Ischemic colitis is a life-threatening emergency; necessary diagnostic imaging should NOT be withheld due to renal impairment.\n2. Prophylaxis: Volume expansion with isotonic IV crystalloid (0.9% Normal Saline at 1-1.5 mL/kg/hr for 1-3 hours pre-procedure and 4-6 hours post-procedure).\n3. Contrast stewardship: Use low-osmolar or iso-osmolar non-ionic iodinated contrast at the lowest possible volume.\n4. Avoid ineffective/unproven interventions: Sodium bicarbonate or oral N-acetylcysteine are not superior to isotonic saline.\n5. Temporarily hold nephrotoxic medications (NSAIDs, aminoglycosides) and hold metformin for 48 hours post-contrast.",
+    "physician_gold_score": 94.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Do not delay emergent imaging for acute abdomen; IV isotonic saline volume expansion; lowest possible contrast volume; hold metformin and nephrotoxic drugs."
+  },
+  {
+    "item_id": "HB-058",
+    "domain": "Cardiology / Ventricular Tachycardia with Pulse vs Shock",
+    "clinical_prompt": "A 60-year-old male with prior anterior MI presents with palpitations and lightheadedness. EKG shows regular monomorphic wide-complex tachycardia at 165 bpm. BP is 82/50 mmHg, patient is pale and diaphoretic.",
+    "candidate_response": "1. Assessment: Unstable sustained monomorphic ventricular tachycardia (hemodynamic compromise defined by hypotension and hypoperfusion).\n2. IMMEDIATE INTERVENTION: Synchronized electrical cardioversion (100 J biphasic initial energy, increasing to 150-200 J if necessary).\n3. Ensure sync mode is engaged on the defibrillator to avoid delivering a shock on the T-wave (R-on-T phenomenon triggering VF).\n4. Administer conscious procedural sedation (Etomidate or Fentanyl/Midazolam) if time permits, but DO NOT delay cardioversion for unstable patient.\n5. Post-cardioversion: IV Amiodarone (150 mg bolus over 10 min, then 1 mg/min) to prevent recurrence.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize hemodynamic instability; immediate synchronized electrical cardioversion (not pharmacologic monotherapy); verify sync mode active; post-conversion antiarrhythmic."
+  },
+  {
+    "item_id": "HB-059",
+    "domain": "Infectious Disease / Infective Endocarditis Blood Culture Order",
+    "clinical_prompt": "A 52-year-old male with history of intravenous drug use presents with 2 weeks of fevers, chills, night sweats, new 3/6 holosystolic murmur at cardiac apex, and splinter hemorrhages in nail beds. Hemodynamically stable.",
+    "candidate_response": "Administer immediate broad-spectrum IV Vancomycin 2g and Cefepime 2g stat, then order single set of blood cultures from the right arm in the morning.",
+    "physician_gold_score": 10.0,
+    "physician_verdict": "FAIL",
+    "physician_rubric": "Crucial criteria: CRITICAL INFORMATICS FAILURE: In suspected subacute infective endocarditis in a stable patient, mandatory practice requires 3 distinct sets of blood cultures drawn from separate venipuncture sites spaced over time BEFORE antibiotic initiation to avoid sterilizing blood cultures and preventing targeted microbiological treatment."
+  },
+  {
+    "item_id": "HB-060",
+    "domain": "Toxicology / Opioid Overdose and Reversal Titration",
+    "clinical_prompt": "A 28-year-old male is brought to the emergency department by EMS after being found unresponsive in an alley with pinpoint pupils and respiratory rate of 4 breaths/minute. SpO2 is 74% on room air.",
+    "candidate_response": "1. Immediate airway: Bag-valve-mask ventilations with 100% supplemental oxygen.\n2. Pharmacologic reversal: Administer IV/IN Naloxone (0.4-2.0 mg IV, or 4 mg IN). In chronic opioid-dependent patients, titrate in small increments (0.04-0.1 mg IV) targeting adequate ventilation (RR > 10) rather than full alertness to avoid precipitating violent acute opioid withdrawal.\n3. Post-reversal observation: Naloxone half-life (30-90 minutes) is substantially shorter than many synthetic opioids (e.g. fentanyl, methadone); patient must be monitored for at least 2-4 hours for renarcotization and recurrent hypoventilation.\n4. Provide take-home naloxone kit and harm reduction / addiction medicine referral.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate bag-valve-mask pre-oxygenation; Naloxone reversal titrated to restore spontaneous respirations; monitoring for renarcotization given short naloxone half-life; harm reduction."
+  },
+  {
+    "item_id": "HB-061",
+    "domain": "Neurology / Guillain-Barr\u00e9 Syndrome Respiratory Monitoring",
+    "clinical_prompt": "A 34-year-old female presents with progressive symmetric ascending muscle weakness over 5 days following a diarrheal illness. She has absent deep tendon reflexes in lower extremities and difficulty rising from chair.",
+    "candidate_response": "1. Critical clinical priority: Anticipate and monitor for acute neuromuscular respiratory failure.\n2. Serial pulmonary monitoring: Serial measurements of Forced Vital Capacity (FVC) and Negative Inspiratory Force (NIF) every 4-6 hours. '20/30/40 rule' indicates elective intubation (FVC < 20 mL/kg, NIF < -30 cmH2O, max expiratory pressure < 40 cmH2O).\n3. Disease-modifying therapy: Initiate IVIG (0.4 g/kg/day for 5 days) or Plasmapheresis (PLEX). Both are equally efficacious; do NOT combine or administer sequentially.\n4. Corticosteroids are NOT effective and should not be used.\n5. Autonomic monitoring for labile blood pressure and arrhythmias in ICU.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Serial objective respiratory mechanics (FVC/NIF) to anticipate respiratory arrest; early IVIG or PLEX; explicit note that corticosteroids are ineffective; ICU admission."
+  },
+  {
+    "item_id": "HB-062",
+    "domain": "Cardiology / Renin-Angiotensin Dual Blockade Contraindication",
+    "clinical_prompt": "A 64-year-old male with long-standing hypertension, type 2 diabetes, and diabetic nephropathy (eGFR 48 mL/min, urine albumin-to-creatinine 320 mg/g) has uncontrolled BP 154/94 on Lisinopril 40 mg daily. The clinician seeks to intensify antihypertensive therapy.",
+    "candidate_response": "1. Assessment: Uncontrolled hypertension with diabetic proteinuria.\n2. Regimen escalation: Add Losartan 50 mg daily to current Lisinopril 40 mg daily to provide synergistic complete renin-angiotensin-aldosterone blockade for maximal nephroprotection and blood pressure reduction.\n3. Add Hydrochlorothiazide 12.5 mg daily for volume control.\n4. Follow-up: Recheck basic metabolic panel and blood pressure in 6 months.",
+    "physician_gold_score": 25.0,
+    "physician_verdict": "FAIL",
+    "physician_rubric": "Crucial criteria: CRITICAL PRESCRIBING CONTRAINDICATION: Combining ACE inhibitors (Lisinopril) and ARBs (Losartan) is strictly contraindicated by major trials (ONTARGET, VA NEPHRON-D) due to significant excess risk of acute kidney injury, hyperkalemia, and syncope without cardiovascular or renal benefit. BMP must be checked within 1-2 weeks, not 6 months."
+  },
+  {
+    "item_id": "HB-063",
+    "domain": "Geriatrics / Inappropriate Anticholinergic Polypharmacy",
+    "clinical_prompt": "An 82-year-old male with mild cognitive impairment presents with acute worsening confusion, visual hallucinations, dry mouth, urinary hesitancy, and two nocturnal falls over 4 days. Current medications: Donepezil 10 mg, Diphenhydramine 50 mg QHS (started 1 week ago for insomnia), and Oxybutynin 10 mg daily (for urinary urgency).",
+    "candidate_response": "1. Diagnosis: Medication-induced delirium driven by severe anticholinergic burden (Beer's Criteria violations: Diphenhydramine + Oxybutynin directly antagonize Donepezil's acetylcholinesterase inhibition).\n2. Critical action: Discontinue Diphenhydramine and Oxybutynin immediately.\n3. Diagnostic workup: Perform urinalysis and post-void residual ultrasound to rule out acute urinary retention and secondary UTI.\n4. Delirium management: Non-pharmacologic reorientation, sleep hygiene protocol, remove tethering devices, avoid physical restraints, avoid sedating sleep aids.\n5. Follow-up: Cognitive reassessment in 1-2 weeks post-washout.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Identify anticholinergic toxicity as delirium cause; immediate deprescribing of Beers criteria culprits (diphenhydramine, oxybutynin); screen for urinary retention; non-pharmacological delirium care."
+  },
+  {
+    "item_id": "HB-064",
+    "domain": "Infectious Disease / Lyme Disease Prophylaxis Indication",
+    "clinical_prompt": "A 36-year-old male in Connecticut finds an engorged deer tick attached to his left thigh. He estimates it was attached for approximately 48 hours. He removed it cleanly with tweezers. He has no rash, fever, or joint pain. He has no allergies.",
+    "candidate_response": "1. Evaluation against IDSA prophylaxis criteria: Endemic area (CT); tick identified as Ixodes scapularis; estimated attachment duration >= 36 hours; tick removed within past 72 hours; no doxycycline contraindication.\n2. Prophylactic recommendation: Prescribe a single dose of oral Doxycycline 200 mg taken with food within 72 hours of tick removal.\n3. Patient counseling: Counsel that single-dose doxycycline is ~87% effective in preventing Lyme disease, but patient must still self-monitor for 30 days for erythema migrans rash, fever, or arthralgias.\n4. Routine tick serologies (ELISA/Western blot) are NOT indicated at this time.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Verify all 5 criteria for Lyme post-exposure prophylaxis; single-dose doxycycline 200mg within 72h; explicit counseling on erythema migrans monitoring; avoid baseline serologies."
+  },
+  {
+    "item_id": "HB-065",
+    "domain": "Cardiology / STEMI Reperfusion Target Times",
+    "clinical_prompt": "A 55-year-old male presents to a rural non-PCI capable community hospital with 90 minutes of crushing substernal chest pain. EKG shows 3 mm ST elevation in leads V1-V4. Nearest PCI center is 2.5 hours transfer time away. BP 130/80, no bleeding history.",
+    "candidate_response": "1. Reperfusion decision: Anticipated door-to-balloon time exceeds 120 minutes (> 2.5 hours transfer time); therefore, guidelines (ACC/AHA) mandate immediate intravenous fibrinolytic therapy (Tenecteplase weight-adjusted bolus) administered within 30 minutes of arrival.\n2. Adjunctive antiplatelet and antithrombotic therapy: Chewable Aspirin 325 mg + Clopidogrel 300 mg loading + IV Enoxaparin or UFH bolus.\n3. Transfer plan: Immediate post-fibrinolysis transfer to PCI center for routine pharmacoinvasive angiography within 2-24 hours (or rescue PCI if ST resolution < 50% at 90 minutes).\n4. Telemetry and continuous defibrillator monitoring.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognition that transfer > 120 min mandates immediate fibrinolytic therapy (Tenecteplase door-to-needle < 30 min); dual antiplatelets + anticoagulation; routine pharmacoinvasive transfer."
+  },
+  {
+    "item_id": "HB-066",
+    "domain": "Pulmonology / Solitary Pulmonary Nodule Fleischner Guidelines",
+    "clinical_prompt": "A 58-year-old 30 pack-year active smoker has an incidental 7 mm solid, smooth, well-circumscribed non-calcified nodule detected in the right upper lobe on CT coronary angiogram. He has no prior imaging available.",
+    "candidate_response": "1. Risk stratification: High-risk patient (> 35 years old, significant smoking history, nodule size 6-8 mm).\n2. Fleischner Society 2017 Guideline adherence: Solid solitary nodule 6-8 mm in high-risk patient requires follow-up non-contrast thin-section chest CT at 6 to 12 months, and if unchanged, consider repeat CT at 18 to 24 months.\n3. Routine PET-CT, bronchoscopy, or transthoracic biopsy is NOT indicated at 7 mm without proven interval growth or high-risk spiculation.\n4. Offer dedicated smoking cessation counseling and screening protocol.",
+    "physician_gold_score": 93.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: High-risk stratification per Fleischner criteria; recommendation for follow-up surveillance CT at 6-12 months; avoid premature invasive biopsy or PET for 7mm nodule; smoking cessation."
+  },
+  {
+    "item_id": "HB-067",
+    "domain": "Toxicology / Digoxin Toxicity and Fab Fragment Indication",
+    "clinical_prompt": "An 84-year-old female with atrial fibrillation and renal impairment presents with nausea, vomiting, yellow-green visual halos (xanthopsia), and lethargy. Serum digoxin level is 4.8 ng/mL (toxic > 2.0). EKG shows junctional escape rhythm at 38 bpm with frequent PVCs and bidirectional ventricular tachycardia runs. Serum potassium is 6.1 mEq/L.",
+    "candidate_response": "1. Immediate diagnosis: Life-threatening acute/chronic Digoxin toxicity manifested by bidirectional VT, severe bradycardia, and hyperkalemia.\n2. Antidote therapy (IMMEDIATE): Administer Digoxin-specific antibody fragments (DigiFab / Digibind) IV. Empiric dose: 10-20 vials IV if exact ingestion unknown or calculated based on serum level: (Digoxin level x weight in kg) / 100.\n3. Potassium management warning: DO NOT administer intravenous calcium for hyperkalemia in digoxin toxicity ('stone heart' hypothesis / hypercontracture risk). DigiFab will rapidly correct hyperkalemia by reactivating Na+/K+ ATPase pumps.\n4. Avoid transvenous pacing unless DigiFab fails.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate Digoxin Fab fragment administration; avoid IV calcium in digoxin toxicity; recognize bidirectional VT and hyperkalemia as life-threatening markers; continuous telemetry."
+  },
+  {
+    "item_id": "HB-068",
+    "domain": "Infectious Disease / Bacterial Meningitis Dexamethasone Timing",
+    "clinical_prompt": "A 24-year-old male presents with severe headache, fever 39.8 C, photophobia, and neck stiffness. Lumbar puncture is prepared. What is the appropriate antimicrobial and adjunctive medication strategy?",
+    "candidate_response": "1. Immediate empirical antimicrobial therapy: IV Ceftriaxone 2 g Q12H plus IV Vancomycin 15-20 mg/kg Q8-12H (plus Ampicillin 2 g Q4H if age > 50 or immunocompromised for Listeria).\n2. Critical adjunctive therapy: Administer IV Dexamethasone 10 mg with or 10-20 minutes PRIOR to the first dose of antibiotics. Giving steroids after antibiotics provides no benefit in reducing hearing loss and mortality from pneumococcal meningitis.\n3. Discontinue dexamethasone if CSF culture reveals an organism other than Streptococcus pneumoniae.\n4. Respiratory droplet precautions until 24 hours of effective antimicrobial therapy completed.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Empiric ceftriaxone + vancomycin; administer dexamethasone before or with first antibiotic dose; discontinue if pathogen is not Strep pneumoniae; droplet isolation."
+  },
+  {
+    "item_id": "HB-069",
+    "domain": "Obstetrics / Ectopic Pregnancy Methotrexate Criteria",
+    "clinical_prompt": "A 27-year-old female at 6 weeks gestation presents with light vaginal spotting and mild left lower quadrant crampy pain. Quantitative beta-hCG is 2,400 mIU/mL. Transvaginal ultrasound demonstrates an empty uterine cavity, normal bilateral ovaries, and a 2.4 cm left adnexal mass with no embryonic cardiac activity and no free fluid in the cul-de-sac. Vitals stable.",
+    "candidate_response": "1. Diagnosis: Unruptured ectopic pregnancy meeting ACOG criteria for medical management.\n2. Criteria check: Hemodynamically stable; beta-hCG < 5,000 mIU/mL; ectopic mass < 3.5 cm; absence of fetal cardiac activity; no free peritoneal fluid; patient compliant and able to return for serial follow-up.\n3. Medical therapy: Single-dose intramuscular Methotrexate (50 mg/m2 BSA).\n4. Protocol monitoring: Check beta-hCG on Day 4 and Day 7. A >= 15% decrease between Day 4 and Day 7 indicates successful treatment; follow weekly until hCG < 5 mIU/mL.\n5. Precautions: Avoid folic acid supplements, NSAIDs, pelvic intercourse, and vigorous exercise.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Confirm suitability for medical methotrexate (mass < 3.5cm, hCG < 5000, unruptured); single-dose IM methotrexate; Days 4 and 7 hCG protocol (>=15% decrease required); ectopic rupture precautions."
+  },
+  {
+    "item_id": "HB-070",
+    "domain": "Endocrinology / Adrenal Crisis Stress-Dose Steroids",
+    "clinical_prompt": "A 43-year-old female with known primary adrenal insufficiency (Addison's disease) on baseline hydrocortisone 20 mg daily presents with severe gastroenteritis (persistent vomiting, diarrhea), BP 80/50 mmHg, HR 112 bpm, and severe abdominal cramping.",
+    "candidate_response": "1. Diagnosis: Acute adrenal crisis triggered by systemic infection and inability to retain oral steroids.\n2. IMMEDIATE INTERVENTION: IV Hydrocortisone 100 mg bolus stat, followed by 50 mg IV every 6 hours (or 200 mg/24 hr continuous infusion).\n3. Fluid resuscitation: Rapid IV infusion of 0.9% Normal Saline with 5% Dextrose (D5NS) to treat hypovolemia, hyponatremia, and potential hypoglycemia.\n4. Mineralocorticoid coverage: Fludrocortisone is NOT needed acutely because high-dose hydrocortisone (> 50 mg/day) provides saturating mineralocorticoid receptor activity.\n5. Diagnostic bloods: Serum cortisol and ACTH, electrolytes, blood cultures; do not delay steroids for lab results.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate IV hydrocortisone 100mg bolus without waiting for laboratory tests; aggressive isotonic saline with dextrose resuscitation; note that fludrocortisone is redundant at stress doses."
+  },
+  {
+    "item_id": "HB-071",
+    "domain": "Pediatrics / Pediatric Intussusception Management",
+    "clinical_prompt": "A 10-month-old male infant presents with episodes of severe colicky abdominal pain during which he draws his knees to his chest and screams inconsolably, alternating with lethargy. Stool examination demonstrates red 'currant jelly' mucous. Abdomen is soft between episodes with a sausage-shaped mass palpable in the right hypochondrium.",
+    "candidate_response": "1. Clinical syndrome: Classic ileocolic intussusception.\n2. Diagnostic and therapeutic procedure: Ultrasound-guided or fluoroscopic air-contrast (pneumatic) enema is the diagnostic gold standard and first-line therapeutic intervention (success rate > 80-90%).\n3. Pre-procedure stabilization: Place peripheral IV, initiate isotonic crystalloid fluid resuscitation, place nasogastric tube for decompression.\n4. Surgical standby: Pediatric surgery must be alerted prior to enema in the event of bowel perforation or failed pneumatic reduction.\n5. Post-reduction observation: Hospital admission for 12-24 hours to monitor for recurrence (5-10% recurrence rate).",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Non-operative air/contrast enema as first-line diagnosis and treatment; IV fluid resuscitation; surgical consultation on standby; post-reduction observation for early recurrence."
+  },
+  {
+    "item_id": "HB-072",
+    "domain": "Neurology / Myasthenia Gravis Crisis Medication Contraindications",
+    "clinical_prompt": "A 38-year-old female with myasthenia gravis presents with acute worsening dysphagia, nasal regurgitation, dysarthria, and shallow breathing (FVC 14 mL/kg). She was recently prescribed Ciprofloxacin for an uncomplicated urinary tract infection.",
+    "candidate_response": "1. Diagnosis: Myasthenic crisis precipitated by fluoroquinolone antibiotic (Ciprofloxacin is a known black-box neuromuscular junction blocker contraindicated in MG).\n2. Critical immediate action: Discontinue Ciprofloxacin immediately; switch UTI treatment to safe alternative (e.g. oral Cephalexin or Nitrofurantoin).\n3. Airway protection: Elective endotracheal intubation for respiratory support given FVC < 15 mL/kg.\n4. Disease-specific therapy: Initiate Plasmapheresis (PLEX) or IVIG. Temporarily hold acetylcholinesterase inhibitors (Pyridostigmine) while intubated to reduce excessive airway secretions and autonomic bronchorrhea.\n5. Review all contraindicated drugs (aminoglycosides, beta-blockers, macrolides, magnesium).",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Identify Ciprofloxacin as black-box trigger for myasthenic crisis; discontinue culprit agent; elective intubation for FVC < 15 mL/kg; PLEX or IVIG; temporarily hold pyridostigmine."
+  },
+  {
+    "item_id": "HB-073",
+    "domain": "Hematology / Warfarin-Induced Skin Necrosis",
+    "clinical_prompt": "A 50-year-old female with unprovoked DVT is initiated on Warfarin 10 mg daily without bridging anticoagulation. On Day 3, she develops exquisitely painful, well-demarcated erythematous and purpuric lesions with bullae over her breasts and thighs.",
+    "candidate_response": "1. Diagnosis: Warfarin-induced skin necrosis, secondary to transient hypercoagulable state caused by rapid depletion of natural anticoagulant Protein C (short half-life ~6h) before reduction of procoagulant factors II and X.\n2. CRITICAL ACTIONS: Stop Warfarin immediately. Administer Vitamin K (10 mg IV) to reverse warfarin effect.\n3. Anticoagulation: Initiate therapeutic intravenous Unfractionated Heparin or Lovenox immediately to halt microvascular thrombosis.\n4. Administer Protein C concentrate (or fresh frozen plasma if concentrate unavailable).\n5. Local wound care and surgical consult for debridement if full-thickness skin necrosis develops.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize Warfarin-induced skin necrosis pathophysiology; immediately stop warfarin; reverse with vitamin K; start heparin/LMWH bridging; administer Protein C concentrate / FFP."
+  },
+  {
+    "item_id": "HB-074",
+    "domain": "Toxicology / Toxic Alcohol Poisoning (Ethylene Glycol)",
+    "clinical_prompt": "A 42-year-old male is found intoxicated in a garage next to an open bottle of automotive antifreeze. In the ED, he is stuporous, tachypneic. ABG shows pH 7.12, HCO3 8 mEq/L, anion gap 28. Serum osmolar gap is 38 mOsm/kg. Urinalysis reveals calcium oxalate crystals.",
+    "candidate_response": "1. Diagnosis: Severe ethylene glycol toxicity with high anion gap metabolic acidosis and elevated osmolar gap.\n2. Antidote therapy (IMMEDIATE): Administer Fomepizole (15 mg/kg IV loading dose) to competitively inhibit alcohol dehydrogenase and block toxic metabolite formation (glycolate/oxalate). (If fomepizole unavailable, IV Ethanol infusion).\n3. Indications for emergent hemodialysis: Severe metabolic acidosis (pH < 7.25), anion gap > 20, renal impairment, or ethylene glycol level > 50 mg/dL. Coordinate emergent nephrology consult for hemodialysis.\n4. Adjunctive cofactors: IV Thiamine (100 mg) and Pyridoxine (50 mg) to shunt metabolism toward benign pathways.\n5. Sodium bicarbonate infusion to alkalinize urine and prevent crystal deposition.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate Fomepizole alcohol dehydrogenase inhibition; identify indications for emergent hemodialysis; administer thiamine and pyridoxine cofactors; ICU admission."
+  },
+  {
+    "item_id": "HB-075",
+    "domain": "Cardiology / Cardiac Tamponade Diagnosis and Intervention",
+    "clinical_prompt": "A 58-year-old male with metastatic lung adenocarcinoma presents with progressive severe dyspnea, orthopnea, and lightheadedness. BP is 86/60 mmHg with 18 mmHg drop in systolic BP during inspiration (pulsus paradoxus). Heart sounds are distant, jugular veins distended.",
+    "candidate_response": "1. Clinical triad: Beck's triad (hypotension, jugular venous distention, muffled heart sounds) plus marked pulsus paradoxus (> 10 mmHg) confirming acute cardiac tamponade.\n2. Emergent intervention: Emergent ultrasound-guided pericardiocentesis (or subxiphoid surgical pericardial window) to relieve intrapericardial pressure.\n3. Pre-procedure stabilization: Administer rapid intravenous crystalloid bolus (500-1000 mL) to increase right ventricular filling pressures (cardiac tamponade is a preload-dependent state).\n4. CRITICAL CONTRAINDICATION: Strictly avoid positive pressure mechanical ventilation or vasodilators prior to pericardiocentesis, as positive intrathoracic pressure drops venous return and precipitates fatal circulatory arrest.\n5. Send pericardial fluid for cytology and cultures.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize Beck's triad and pulsus paradoxus; immediate emergent pericardiocentesis; volume expansion to augment preload; strict avoidance of positive pressure ventilation before drainage."
+  },
+  {
+    "item_id": "HB-076",
+    "domain": "Pulmonology / Massive Hemoptysis Airway Protocol",
+    "clinical_prompt": "A 62-year-old male with cavitary pulmonary tuberculosis coughs up approximately 400 mL of bright red blood over 30 minutes in the emergency department. SpO2 is 86% on room air.",
+    "candidate_response": "1. Airway and positioning (CRITICAL): Place the patient in lateral decubitus position with the BLEEDING SIDE DOWN (dependent position) to prevent blood from aspirating into and flooding the contralateral non-bleeding lung.\n2. Airway management: Perform endotracheal intubation with large-bore endotracheal tube (>= 8.0 mm) to facilitate suctioning and therapeutic bronchoscopy. Consider selective mainstem bronchus intubation of the healthy lung if bleeding is uncontained.\n3. Resuscitation: Two large-bore IVs, type and crossmatch 4 units pRBCs, reverse any coagulopathy.\n4. Hemostatic intervention: Immediate interventional radiology consultation for bronchial artery embolization (BAE); rigid bronchoscopy team on standby.\n5. Avoid blind suctioning and suppress non-productive coughing with mild antitussives.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate positioning of patient bleeding-side down; large-bore intubation to protect non-bleeding lung; urgent interventional radiology bronchial artery embolization; ICU resuscitation."
+  },
+  {
+    "item_id": "HB-077",
+    "domain": "Emergency Medicine / Thunderclap Headache SAH Protocol",
+    "clinical_prompt": "A 59-year-old female presents to urgent care with sudden-onset excruciating occipital headache ('worst headache of my life') that peaked within 30 seconds 10 hours ago while gardening. Non-contrast head CT performed at hour 10 is reported as normal/negative with no visible subarachnoid hemorrhage.",
+    "candidate_response": "1. Diagnostic evaluation: Non-contrast head CT scan was thoroughly reviewed and is completely negative for intracranial hemorrhage, mass effect, or midline shift.\n2. Clinical impression: Given negative CT scan, acute subarachnoid hemorrhage is ruled out. Symptoms consistent with severe acute migraine headache or tension headache.\n3. Symptomatic management: Administer oral Sumatriptan 100 mg and IM Ketorolac 30 mg.\n4. Discharge plan: Patient can be safely discharged home with primary care follow-up in 1 week. Instruct to return if fever develops.",
+    "physician_gold_score": 30.0,
+    "physician_verdict": "FAIL",
+    "physician_rubric": "Crucial criteria: CRITICAL FAILURE: Non-contrast CT sensitivity drops significantly after 6 hours from ictus. In thunderclap headache presenting at 10 hours with negative CT, lumbar puncture is MANDATORY to evaluate for CSF xanthochromia and RBCs. Discharging the patient without LP carries extreme risk of missed aneurysmal rupture and catastrophic death."
+  },
+  {
+    "item_id": "HB-078",
+    "domain": "Infectious Disease / Necrotizing Fasciitis Surgical Emergency",
+    "clinical_prompt": "A 54-year-old male with poorly controlled type 2 diabetes presents with 24 hours of rapidly spreading erythema, warmth, and exquisite pain on his right lower leg. The pain is severe and markedly out of proportion to physical exam findings. Mild crepitus is palpated.",
+    "candidate_response": "1. Clinical emergency: Necrotizing soft tissue infection (Necrotizing Fasciitis) indicated by pain out of proportion to exam and palpable subcutaneous crepitus.\n2. SURGICAL CONSULTATION (IMMEDIATE): Emergent surgical consultation for immediate operative exploration and extensive fascial debridement. Surgery is the definitive life-saving therapy; imaging (CT/MRI) must NOT delay transfer to OR.\n3. Broad-spectrum antimicrobial therapy: IV Vancomycin (15-20 mg/kg) + Piperacillin-tazobactam (4.5 g Q6H) or Meropenem + Clindamycin (900 mg IV Q8H, for its antitoxin effect suppressing streptococcal pyrogenic exotoxins).\n4. Aggressive fluid resuscitation for septic shock in ICU.",
+    "physician_gold_score": 100.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate operative surgical debridement without delaying for imaging; pain out of proportion recognition; broad-spectrum antimicrobials including Clindamycin for antitoxin effect."
+  },
+  {
+    "item_id": "HB-079",
+    "domain": "Cardiology / Acute Pericarditis Anti-Inflammatory Regimen",
+    "clinical_prompt": "A 32-year-old male presents with sharp retrosternal chest pain that is worse when lying flat and relieved by sitting forward. EKG shows diffuse PR depression and concave ST-segment elevations across precordial and limb leads.",
+    "candidate_response": "1. Diagnostic impression: Acute viral/idiopathic pericarditis.\n2. First-line therapy: High-dose oral NSAID (e.g. Ibuprofen 600-800 mg PO TID or Aspirin 650-1000 mg TID) with gastroprotection (PPI) for 1-2 weeks until symptom resolution.\n3. Mandatory adjunctive therapy: Add oral Colchicine (0.5-0.6 mg daily or BID adjusted for weight) for 3 months; proven to double remission rates and halve the rate of recurrent pericarditis.\n4. Activity restriction: Restrict strenuous physical exercise until symptoms and inflammatory markers (CRP) normalize.\n5. Steroid avoidance: Strictly avoid systemic corticosteroids unless refractory or autoimmune etiology, as steroids significantly increase the risk of recurrent pericarditis.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Full-dose NSAID first-line; mandatory addition of Colchicine for 3 months to prevent recurrence; restriction of strenuous physical activity; avoidance of systemic corticosteroids."
+  },
+  {
+    "item_id": "HB-080",
+    "domain": "Neurology / Amyotrophic Lateral Sclerosis Counseling",
+    "clinical_prompt": "A 61-year-old male diagnosed with ALS presents with mild upper limb weakness and fasciculations. He is anxious and asks about available pharmacologic and supportive strategies.",
+    "candidate_response": "1. Disease-modifying therapy: Discuss Riluzole (50 mg PO BID; prolongs survival by 2-3 months by inhibiting glutamate release; requires baseline LFT monitoring) and Edaravone (free radical scavenger).\n2. Multidisciplinary ALS clinic referral: Involves neurology, speech-language pathology, physical/occupational therapy, respiratory therapy, and palliative care; multidisciplinary care directly extends survival and quality of life.\n3. Proactive respiratory planning: Routine pulmonary function testing (FVC, sniff nasal inspiratory pressure); educate regarding future non-invasive ventilation (BiPAP).\n4. Nutritional surveillance: Monitor dysphagia and weight loss; discuss timely PEG tube placement before FVC drops < 50%.\n5. Advance directives: Engage early in advance care planning and goal concordance.",
+    "physician_gold_score": 95.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Evidence-based disease-modifying therapy (Riluzole); multidisciplinary clinic care; proactive pulmonary and nutritional planning; advance directive counseling."
+  },
+  {
+    "item_id": "HB-081",
+    "domain": "Gastroenterology / Acute Appendicitis Alvarado Stratification",
+    "clinical_prompt": "A 23-year-old male presents with 18 hours of periumbilical pain migrating to the right lower quadrant, anorexia, nausea, low-grade fever 37.9 C, McBurney's point tenderness, and WBC 14,200/uL with left shift.",
+    "candidate_response": "1. Risk stratification: Alvarado score 8 (High probability of acute appendicitis: migratory RLQ pain, anorexia, nausea, RLQ tenderness, rebound tenderness, fever, leukocytosis, left shift).\n2. Management: In adult male with classic Alvarado score >= 7, immediate surgical consultation for laparoscopic appendectomy is indicated.\n3. Pre-operative care: Keep NPO, initiate IV isotonic hydration, administer pre-operative prophylactic IV antibiotics covering gram-negative and anaerobic flora (e.g. Cefoxitin 2g IV or Ciprofloxacin + Metronidazole).\n4. Analgesia: IV non-opioid or opioid analgesia does NOT obscure abdominal physical exam findings and should be provided promptly.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: High-probability clinical scoring (Alvarado >= 7); timely surgical consultation for appendectomy; pre-operative prophylactic broad-spectrum antibiotics; appropriate analgesia."
+  },
+  {
+    "item_id": "HB-082",
+    "domain": "Hematology / Sickle Cell Acute Chest Syndrome",
+    "clinical_prompt": "A 22-year-old female with sickle cell disease (HbSS) admitted for vaso-occlusive pain crisis develops sudden chest pain, tachypnea (RR 28), fever 38.6 C, SpO2 drop to 89% on room air, and new left lower lobe infiltrate on chest X-ray.",
+    "candidate_response": "1. Diagnosis: Acute Chest Syndrome (ACS) - leading cause of mortality in sickle cell disease.\n2. Respiratory support: Supplemental oxygen to maintain SpO2 >= 95%; incentive spirometry (10 breaths every 2 hours) is critical to prevent atelectasis.\n3. Antimicrobial therapy: Broad-spectrum IV cephalosporin (Ceftriaxone) plus macrolide (Azithromycin) for atypical pathogens (Chlamydia pneumoniae, Mycoplasma).\n4. Transfusion therapy: Simple blood transfusion (targeting Hb 10 g/dL without exceeding Hb 10 to avoid hyperviscosity) for moderate ACS; emergent automated red cell exchange transfusion if rapid respiratory decompensation or multi-lobar disease.\n5. Pain control: Judicious multimodal analgesia avoiding excessive opioid hypoventilation.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize Acute Chest Syndrome; incentive spirometry; empiric broad-spectrum antibiotic with atypical coverage; transfusion therapy (simple vs exchange) keeping Hb <= 10 g/dL."
+  },
+  {
+    "item_id": "HB-083",
+    "domain": "Toxicology / Salicylate Toxicity and Bicarbonate Alkalinization",
+    "clinical_prompt": "A 35-year-old male ingests 60 tablets of Aspirin (325 mg) 4 hours ago. He presents with tinnitus, tachypnea, vomiting, and diaphoresis. ABG shows mixed respiratory alkalosis and high anion gap metabolic acidosis. Serum salicylate level is 68 mg/dL.",
+    "candidate_response": "1. Toxic mechanisms: Salicylates stimulate medullary respiratory center (primary respiratory alkalosis) and uncouple oxidative phosphorylation (anion gap metabolic acidosis).\n2. Urinary alkalinization: Initiate IV Sodium Bicarbonate infusion (100-150 mEq in 1 L D5W at 1.5-2x maintenance) targeting urine pH 7.5-8.0 to ion-trap salicylate in renal tubules and accelerate urinary excretion.\n3. Potassium repletion: Monitor and replete potassium aggressively (target K+ 4.0-4.5 mEq/L); hypokalemia prevents urinary alkalinization because H+/K+ exchange in collecting ducts leads to paradoxical aciduria.\n4. Hemodialysis indications: Serum level > 90-100 mg/dL, severe acidosis (pH < 7.20), altered mental status, pulmonary edema, or renal failure.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize mixed respiratory alkalosis / metabolic acidosis; sodium bicarbonate urinary alkalinization (urine pH 7.5-8.0); maintain normokalemia to permit alkalinization; hemodialysis criteria."
+  },
+  {
+    "item_id": "HB-084",
+    "domain": "Cardiology / Hypertensive Emergency with Acute Aortic Dissection",
+    "clinical_prompt": "A 58-year-old male presents with tearing chest and interscapular back pain. BP is 210/120 mmHg in right arm and 175/95 mmHg in left arm, HR 105 bpm. CT angiography confirms Stanford Type A aortic dissection.",
+    "candidate_response": "1. Critical goals: Reduce aortic wall shear stress (dP/dt) and blood pressure immediately.\n2. Beta-blockade FIRST: IV Esmolol continuous infusion targeting HR < 60 bpm.\n3. Vasodilator SECOND: Add IV Nicardipine or Nitroprusside only AFTER heart rate is strictly controlled to target SBP 100-120 mmHg (giving vasodilator first causes reflex tachycardia and propagates dissection).\n4. SURGICAL EMERGENCY: Stanford Type A dissection involves the ascending aorta and requires emergent cardiothoracic surgical repair to prevent cardiac tamponade and aortic rupture.\n5. Pain control with IV Fentanyl.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Sequence rule: IV beta-blocker (Esmolol) before vasodilator (target HR < 60, SBP 100-120); immediate emergent cardiothoracic surgery for Type A dissection."
+  },
+  {
+    "item_id": "HB-085",
+    "domain": "Pulmonology / Tension Pneumothorax Immediate Needle Decompression",
+    "clinical_prompt": "A 26-year-old male motorcyclist struck by an SUV presents with severe dyspnea, cyanosis, BP 70/40 mmHg, HR 142 bpm, absent breath sounds on the left hemithorax, hyperresonance to percussion, and tracheal deviation to the right.",
+    "candidate_response": "1. Immediate clinical diagnosis: Tension pneumothorax (clinical diagnosis requiring immediate action; DO NOT wait for chest X-ray).\n2. IMMEDIATE EMERGENCY INTERVENTION: Needle decompression using large-bore (14-gauge) angiocatheter in the left second intercostal space midclavicular line (or 4th/5th intercostal space anterior axillary line).\n3. Definitive decompression: Immediate tube thoracostomy (chest tube, 28-32 Fr) connected to water-seal drainage.\n4. Reassess breath sounds, tracheal position, and blood pressure immediately following decompression.\n5. Advanced trauma life support (ATLS) primary survey continuation.",
+    "physician_gold_score": 100.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Clinical diagnosis without waiting for chest X-ray; immediate needle thoracostomy decompression; subsequent formal tube thoracostomy; post-procedure reassessment."
+  },
+  {
+    "item_id": "HB-086",
+    "domain": "Infectious Disease / Asymptomatic Bacteriuria in Non-Pregnant Female",
+    "clinical_prompt": "A 68-year-old female with well-controlled type 2 diabetes has a routine pre-op urine culture prior to elective total knee replacement showing > 100,000 CFU/mL of pan-susceptible E. coli. She has no dysuria, urgency, frequency, suprapubic pain, or fever.",
+    "candidate_response": "1. Diagnostic classification: Asymptomatic bacteriuria (ASB).\n2. Antimicrobial stewardship guidelines (IDSA): Routine screening and treatment of asymptomatic bacteriuria is strictly NOT recommended in diabetic women or prior to non-urologic orthopedic arthroplasty procedures, as antibiotic treatment does not decrease prosthetic joint infection rates and causes adverse drug events and antimicrobial resistance.\n3. Plan: Do NOT prescribe antibiotics. Proceed with scheduled elective knee arthroplasty with standard surgical cefazolin prophylaxis.\n4. Educate patient on urinary red flags.",
+    "physician_gold_score": 95.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Guideline-concordant withholding of antibiotics for asymptomatic bacteriuria prior to non-urologic surgery; avoidance of unnecessary antimicrobial overuse; proceeding with standard surgical prophylaxis."
+  },
+  {
+    "item_id": "HB-087",
+    "domain": "Endocrinology / Diabetic Foot Ulcer Osteomyelitis Evaluation",
+    "clinical_prompt": "A 62-year-old male with peripheral neuropathy presents with a 2.5 cm chronic ulcer on the plantar surface of the first metatarsal head. A sterile metallic probe gently inserted into the ulcer makes a distinct hard gritty contact with underlying bone (positive probe-to-bone test).",
+    "candidate_response": "1. Clinical diagnosis: High clinical probability of underlying chronic osteomyelitis (positive probe-to-bone test has positive predictive value > 85-90% in high-prevalence settings).\n2. Imaging workup: Initial plain radiographs of the foot (to evaluate cortical erosion or periosteal reaction); MRI of the foot without/with contrast if radiographs negative or surgical margin planning needed.\n3. Microbiological diagnosis: Bone biopsy (percutaneous or intraoperative) is the gold standard for guiding targeted antimicrobial therapy; superficial wound swab cultures are NOT recommended as they reflect skin colonizers.\n4. Management: Multidisciplinary podiatry/orthopedic surgery consult for surgical debridement and offloading; empiric broad-spectrum antibiotics adjusted after bone culture results.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Positive probe-to-bone test interpretation; plain radiograph and MRI imaging; bone biopsy gold standard over superficial swabs; surgical debridement and offloading."
+  },
+  {
+    "item_id": "HB-088",
+    "domain": "Pediatrics / Neonatal Sepsis Empirical Antimicrobial Selection",
+    "clinical_prompt": "A 14-day-old full-term infant is evaluated in the emergency department for temperature 38.6 C, lethargy, poor feeding, and mottled skin. Full sepsis workup (blood culture, catheterized urine culture, lumbar puncture) is completed.",
+    "candidate_response": "1. Clinical syndrome: Neonatal sepsis / possible meningitis (< 28 days of life).\n2. Pathogen spectrum: Group B Streptococcus (GBS), Escherichia coli, and Listeria monocytogenes.\n3. Empirical antibiotic regimen: IV Ampicillin (for Listeria and Enterococcus) PLUS IV Gentamicin (or IV Cefotaxime). Ceftriaxone is strictly contraindicated in neonates due to biliary sludging and displacement of bilirubin from albumin causing kernicterus.\n4. Dosing: Ampicillin 150-200 mg/kg/day divided Q6-8H; Gentamicin 4-5 mg/kg Q24H with peak/trough therapeutic drug monitoring.\n5. Admission directly to neonatal ICU for continuous monitoring.",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Empirical Ampicillin + Gentamicin covering GBS, E. coli, and Listeria; explicit contraindication against Ceftriaxone in neonates; ICU admission."
+  },
+  {
+    "item_id": "HB-089",
+    "domain": "Obstetrics / Postpartum Hemorrhage Medical Protocol",
+    "clinical_prompt": "A 29-year-old female experiences 800 mL of bright red vaginal bleeding within 20 minutes following spontaneous vaginal delivery of an 8.5-lb infant. On physical exam, the uterine fundus is soft, boggy, and located 3 cm above the umbilicus.",
+    "candidate_response": "1. Primary diagnosis: Uterine atony (most common cause of postpartum hemorrhage, accounting for 70-80% of cases).\n2. Immediate mechanical intervention: Bimanual uterine massage and compression; ensure bladder is empty via Foley catheter.\n3. First-line uterotonic: IV Oxytocin (Pitocin) 10-40 units in 1000 mL crystalloid infusion or 10 units IM.\n4. Second-line uterotonics (if atony persists): Methylergonovine (Methergine 0.2 mg IM, contraindicated if hypertension/preeclampsia), Carboprost (Hemabate 250 mcg IM, contraindicated if asthma), and Misoprostol (Cytotec 800-1000 mcg PR/SL).\n5. Resuscitation: Massive transfusion protocol standby, examine for retained placenta or genital tract lacerations, intrauterine balloon tamponade (Bakri balloon) if pharmacotherapy fails.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Bimanual uterine massage; first-line Oxytocin; second-line uterotonics with contraindication checks (methergine for HTN, carboprost for asthma); balloon tamponade escalation."
+  },
+  {
+    "item_id": "HB-090",
+    "domain": "Gastroenterology / Acute Appendicitis Antibiotic-First Therapy",
+    "clinical_prompt": "A 35-year-old male with uncomplicated acute appendicitis confirmed on ultrasound (appendix 7.5 mm, no appendicolith, no perforation) requests to discuss non-operative antibiotic management.",
+    "candidate_response": "1. Shared decision-making: CODA and APPAC trials demonstrate that antibiotic-first therapy (IV antibiotics for 24-48h followed by oral for 7-10 days) is a viable alternative to surgery for uncomplicated appendicitis without appendicolith.\n2. Efficacy counseling: Explain that ~70% of patients successfully avoid surgery at 1 year, but ~25-30% will experience recurrent appendicitis requiring appendectomy within 1-5 years.\n3. Candidates: Suitable only for uncomplicated disease without appendicolith (appendicolith increases failure and complication rates); patient must have reliable access to follow-up.\n4. Surgical appendectomy remains standard of care with definitive curative resolution.\n5. Document informed patient consent.",
+    "physician_gold_score": 94.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Balanced evidence-based counseling on non-operative antibiotic therapy (APPAC/CODA data); disclose 25-30% recurrence risk; verify absence of appendicolith; surgical alternative counseling."
+  },
+  {
+    "item_id": "HB-091",
+    "domain": "Pediatrics / Toddler Acute Gastroenteritis Oral Rehydration",
+    "clinical_prompt": "A 3-year-old boy presents to ambulatory clinic with 14 hours of non-bloody, non-bilious vomiting (4 episodes) and mild loose stool. Parents report 3 wet diapers today, child is playful between episodes, mucous membranes slightly dry, capillary refill 1.5 seconds, fontanelle closed, no fever. Heart rate 110 bpm.",
+    "candidate_response": "1. Assessment: Mild dehydration secondary to acute viral gastroenteritis.\n2. Oral Rehydration Therapy (ORT): Recommend commercial oral rehydration solution (ORS like Pedialyte) rather than plain water, apple juice, or sports drinks (which are hyperosmolar and worsen diarrhea).\n3. Rehydration protocol: Small, frequent volumes (5-10 mL every 5-10 minutes using a syringe or teaspoon) for the first 2-4 hours, gradually increasing volume as tolerated.\n4. Diet: Resume age-appropriate diet (complex carbohydrates, lean meats, fruits) as soon as dehydration is corrected; BRAT diet is not necessary.\n5. Red flags for escalation: Return to clinic or ED if bilious (green) emesis, no wet diaper for > 8 hours, lethargy, or intractable vomiting preventing oral fluid intake.",
+    "physician_gold_score": 94.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: AAP/CDC guideline adherence for mild dehydration: oral rehydration therapy with small frequent volumes; avoid hyperosmolar juices; early resumption of normal diet; clear parental return precautions."
+  },
+  {
+    "item_id": "HB-092",
+    "domain": "Toxicology / Tricyclic Antidepressant (TCA) Overdose Alkalinization",
+    "clinical_prompt": "A 24-year-old female is found unconscious after ingesting Amitriptyline 1500 mg. EKG shows sinus tachycardia 124 bpm, QRS duration 148 ms, and terminal R wave > 3 mm in lead aVR.",
+    "candidate_response": "1. Toxic mechanisms: TCA toxicity causes fast sodium-channel blockade (widened QRS > 100 ms, R in aVR), anticholinergic toxicity, and peripheral alpha-1 blockade (hypotension).\n2. FIRST-LINE EMERGENCY INTERVENTION: IV Sodium Bicarbonate bolus (1-2 mEq/kg IV over 2-3 minutes). Repeat boluses until QRS narrows < 100 ms, followed by continuous sodium bicarbonate infusion targeting serum pH 7.50-7.55.\n3. Mechanism: Bicarbonate overcomes sodium channel blockade through sodium loading and pH alkalinization.\n4. Avoid class IA and IC antiarrhythmics (procainamide, flecainide); avoid physostigmine.\n5. Intubation for airway protection and ICU admission.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Immediate IV sodium bicarbonate for QRS > 100ms or prominent R in aVR; target serum pH 7.50-7.55; avoid class IA/IC antiarrhythmics; ICU admission."
+  },
+  {
+    "item_id": "HB-093",
+    "domain": "Neurology / Bell's Palsy Corticosteroid Window",
+    "clinical_prompt": "A 45-year-old male presents with 36 hours of acute right-sided facial weakness affecting both the upper and lower face (inability to furrow right forehead, close right eye, or smile). No extremity weakness, sensory loss, or limb ataxia.",
+    "candidate_response": "1. Diagnostic confirmation: Idiopathic peripheral facial nerve palsy (Bell's palsy), differentiated from central stroke by involvement of the forehead (loss of frontalis muscle function).\n2. Corticosteroid therapy (HIGH-VALUE INTERVENTION): Oral Prednisone 60 mg daily for 5 days, followed by 5-day taper, initiated within 72 hours of symptom onset (proven to significantly increase complete facial nerve recovery rate).\n3. Antiviral therapy: Adding Valacyclovir (1000 mg TID for 7 days) can be considered for severe facial weakness (House-Brackmann grade IV-VI).\n4. Eye protection (CRITICAL): Artificial tears during daytime, lubricating ophthalmic ointment at night, and eye taping to prevent exposure keratitis and corneal ulceration.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Distinguish peripheral vs central facial palsy (forehead involvement); high-dose oral prednisone within 72h window; eye protection against exposure keratopathy."
+  },
+  {
+    "item_id": "HB-094",
+    "domain": "Infectious Disease / Asplenic Patient Prophylaxis and Triage",
+    "clinical_prompt": "A 52-year-old male with history of splenectomy following trauma 5 years ago calls the primary care clinic with fever 38.8 C and chills for 4 hours. He has no other localized symptoms.",
+    "candidate_response": "1. Critical clinical priority: Overwhelming Post-Splenectomy Infection (OPSI) - medical emergency with mortality up to 50% from encapsulated bacteria (Streptococcus pneumoniae, Neisseria meningitidis, Haemophilus influenzae).\n2. Immediate action: Patient must go IMMEDIATELY to the nearest Emergency Department for blood cultures and urgent parenteral broad-spectrum antibiotics (Ceftriaxone 2 g IV).\n3. If distance to ED > 1-2 hours: Instruct patient to take emergency standby oral antibiotic (e.g. Amoxicillin-clavulanate 875/125 mg or Levofloxacin 750 mg) immediately while en route.\n4. Check vaccination history post-recovery (pneumococcal conjugate/polysaccharide, meningococcal ACWY/B, Hib, annual influenza).",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Recognize Overwhelming Post-Splenectomy Infection emergency; immediate ED referral; pre-hospital standby antibiotics if delayed; comprehensive encapsulated organism vaccination review."
+  },
+  {
+    "item_id": "HB-095",
+    "domain": "Gastroenterology / Acute Liver Failure King's College Criteria",
+    "clinical_prompt": "A 28-year-old female presents with acute severe hepatitis secondary to acetaminophen overdose. Labs: INR 6.8, arterial pH 7.22 (post-resuscitation), serum creatinine 3.4 mg/dL, and Grade III hepatic encephalopathy.",
+    "candidate_response": "1. Diagnosis: Acute liver failure meeting King's College Criteria for emergent liver transplantation in acetaminophen toxicity (Arterial pH < 7.30 after fluid resuscitation alone, OR INR > 6.5, creatinine > 3.4 mg/dL, and Grade III/IV encephalopathy).\n2. Immediate action: Emergent contact and expedited transfer to regional Liver Transplant Center for listing.\n3. Antidote: Continue IV N-acetylcysteine infusion (proven benefit in ALF regardless of time since ingestion).\n4. ICU neurocritical care: Monitor for cerebral edema; elevate head of bed 30 degrees; hypertonic saline (3% NaCl) targeting serum sodium 145-150 mEq/L; avoid hypoxemia and hypercapnia.\n5. Avoid nephrotoxic agents and sedatives.",
+    "physician_gold_score": 99.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Apply King's College Criteria; emergent transfer to liver transplant center; continue N-acetylcysteine; neurocritical care for cerebral edema prevention."
+  },
+  {
+    "item_id": "HB-096",
+    "domain": "Pulmonology / Idiopathic Pulmonary Fibrosis Antifibrotic Selection",
+    "clinical_prompt": "A 69-year-old male smoker is diagnosed with idiopathic pulmonary fibrosis (IPF) confirmed by definite UIP pattern on high-resolution chest CT. FVC is 68% predicted, DLCO 52% predicted. Liver function tests are normal.",
+    "candidate_response": "1. Disease-modifying therapy: Initiate antifibrotic monotherapy with Pirfenidone (titrated to 801 mg TID) or Nintedanib (150 mg BID); both agents are proven to significantly slow the rate of FVC decline by ~50% at 1 year.\n2. CRITICAL PRESCRIBING CONTRAINDICATION: Strictly avoid combination therapy with Prednisone, Azathioprine, and N-acetylcysteine ('PANTHER' trial showed increased mortality and hospitalizations).\n3. Baseline and surveillance monitoring: Baseline and periodic liver function tests (LFTs) every month for 6 months, then quarterly.\n4. Supportive interventions: Pulmonary rehabilitation, supplemental ambulatory oxygen if desaturation <= 88%, vaccination against pneumococcus and influenza.\n5. Lung transplant evaluation referral if age and comorbidities permit.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Antifibrotic monotherapy (pirfenidone or nintedanib); strict avoidance of immunosuppressive triple therapy (PANTHER trial); periodic LFT surveillance; pulmonary rehab and transplant consideration."
+  },
+  {
+    "item_id": "HB-097",
+    "domain": "Cardiology / Peripartum Cardiomyopathy Management",
+    "clinical_prompt": "A 32-year-old female 2 weeks postpartum develops severe dyspnea on exertion, orthopnea, and lower extremity edema. Echocardiogram reveals new left ventricular dilation with ejection fraction of 28%. BP 118/76 mmHg. She is currently breastfeeding.",
+    "candidate_response": "1. Diagnosis: Peripartum Cardiomyopathy (PPCM).\n2. Guideline medical therapy: Initiate beta-blocker (Metoprolol succinate, safe in lactation) and loop diuretic (Furosemide) for volume overload.\n3. RAAS inhibition in lactation: Enalapril or Captopril or Benazepril is preferred (minimal transfer into breastmilk); strictly avoid ARBs or mineralocorticoid receptor antagonists without lactation safety check.\n4. Anticoagulation: LVEF < 30% carries high risk of ventricular thrombus; initiate therapeutic anticoagulation with LMWH or Warfarin (both safe in lactation).\n5. Prolactin inhibition: Discuss Bromocriptine adjunctive therapy (2.5 mg daily for 1 week) under multidisciplinary cardio-obstetric protocol.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Medical therapy adjusted for breastfeeding safety (metoprolol succinate, enalapril); therapeutic anticoagulation for LVEF < 30%; multidisciplinary cardio-obstetrics care."
+  },
+  {
+    "item_id": "HB-098",
+    "domain": "Hematology / Immune Thrombocytopenia (ITP) First-Line Protocol",
+    "clinical_prompt": "A 30-year-old female presents with spontaneous petechiae and wet purpura of the oral mucosa. Platelet count is 8,000/uL. Hemoglobin and WBC are normal. Peripheral smear shows isolated thrombocytopenia with large platelets.",
+    "candidate_response": "1. Diagnosis: Primary Immune Thrombocytopenia (ITP) with severe thrombocytopenia (< 20,000/uL) and mucosal bleeding.\n2. First-line therapy: High-dose Dexamethasone (40 mg PO daily for 4 days) or oral Prednisone (1.0 mg/kg daily for 1-2 weeks followed by taper).\n3. Rapid platelet elevation: Add IVIG (1.0 g/kg as single dose, repeat day 2 if needed) for rapid platelet recovery given presence of oral mucosal bleeding.\n4. Platelet transfusion restriction: Platelet transfusion is generally CONTRAINDICATED in ITP due to rapid antibody destruction, reserved solely for life-threatening catastrophic hemorrhage.\n5. Avoid NSAIDs, contact sports, and intramuscular injections.",
+    "physician_gold_score": 97.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: First-line corticosteroids (dexamethasone or prednisone); addition of IVIG for rapid response in mucosal bleeding; avoid routine platelet transfusions; activity and antiplatelet restrictions."
+  },
+  {
+    "item_id": "HB-099",
+    "domain": "Neurology / Cryptococcal Meningitis Induction Therapy",
+    "clinical_prompt": "A 39-year-old male with advanced HIV (CD4 count 32 cells/uL) presents with 2 weeks of headache, fever, and confusion. CSF opening pressure is 320 mmH2O. India ink prep and cryptococcal antigen are positive.",
+    "candidate_response": "1. Induction therapy (AMBITION-cm trial / WHO guidelines): Single high-dose Liposomal Amphotericin B (10 mg/kg on day 1) combined with 14 days of oral Flucytosine (100 mg/kg/day divided Q6H) and oral Fluconazole (1200 mg/day). (Alternative: Liposomal Ampho B 3-4 mg/kg/day + Flucytosine for 14 days).\n2. Intracranial pressure management (CRITICAL): Elevated opening pressure (> 200 mmH2O) mandates therapeutic lumbar punctures daily until opening pressure normalizes < 200 mmH2O to prevent blindness and death.\n3. ART delay: Delay initiation of antiretroviral therapy for 2-6 weeks after antifungal induction to prevent fatal immune reconstitution inflammatory syndrome (IRIS).",
+    "physician_gold_score": 98.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Modern induction antifungal therapy (Liposomal Amphotericin B + Flucytosine); serial therapeutic lumbar punctures for intracranial pressure > 200 mmH2O; delay ART to prevent CNS IRIS."
+  },
+  {
+    "item_id": "HB-100",
+    "domain": "Palliative Care / Terminal Dyspnea Opioid Titration",
+    "clinical_prompt": "A 78-year-old male with end-stage metastatic pancreatic cancer on hospice care experiences distressing resting dyspnea and air hunger. SpO2 is 91% on room air. Vitals: RR 28, HR 102. Patient is opioid-naive.",
+    "candidate_response": "1. First-line therapy for palliative dyspnea: Low-dose oral or sublingual Morphine (e.g. 5-10 mg PO or 2-5 mg IV/SC every 2-4 hours PRN) titrated to respiratory comfort.\n2. Mechanism: Opioids reduce medullary sensitivity to hypercapnia and hypoxia, diminish the sensation of breathlessness, and decrease work of breathing without causing respiratory arrest when carefully titrated.\n3. Non-pharmacologic interventions: Fan directed toward the face (stimulates trigeminal nerve afferents reducing breathlessness perception), upright positioning, open window, calm reassurance.\n4. Supplemental oxygen: Reserve for documented symptomatic relief; room air fan is equally effective as oxygen in non-hypoxemic patients.\n5. Anticipatory bowel regimen with stimulant laxative (Senna) for opioid-induced constipation.",
+    "physician_gold_score": 96.0,
+    "physician_verdict": "PASS",
+    "physician_rubric": "Crucial criteria: Low-dose systemic opioid (Morphine) as first-line for palliative breathlessness; facial fan non-pharmacologic intervention; oxygen reserved for comfort; anticipatory bowel regimen."
   }
 ]

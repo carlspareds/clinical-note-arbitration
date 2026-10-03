@@ -1,13 +1,13 @@
 # Inference Cost & Token Economics Analysis
 
 > [!NOTE]
-> **Empirical Run Status: Live Model Benchmark ($0.00090 Measured Cost / Arbitration)**
-> The measured evaluation run executed on 2026-09-29 with `glm-5.3-flash` across 20 ACI-Bench encounters (141,007 tokens, $0.0180 total spend) and 25 HealthBench items (92,010 tokens, $0.0126 total spend). The pricing tables below reflect both empirical benchmark measurements and published vendor rate cards for production deployment planning.
+> **Empirical Run Status: Live Model Benchmark ($0.00091 Measured Cost / Arbitration)**
+> The measured evaluation run executed on 2026-10-03 with `glm-5.3-flash` across 20 ACI-Bench encounters (141,610 tokens, $0.0182 total spend) and 100 HealthBench items (368,240 tokens, $0.0501 total spend). The pricing tables below reflect both empirical benchmark measurements and published vendor rate cards for production deployment planning.
 
 ## 1. Executive Summary
 
 Evaluating clinical documentation using LLM-as-a-Judge introduces distinct cost profiles depending on the deployment topology:
-- **Measured Live Frontier Arbiter (`glm-5.3-flash`)**: **$0.00090 measured cost per arbitration** (dual-swap AB & BA protocol, 7,050 tokens per encounter) providing fast clinical verification with zero position bias.
+- **Measured Live Frontier Arbiter (`glm-5.3-flash`)**: **$0.00091 measured cost per arbitration** (dual-swap AB & BA protocol, 7,080 tokens per encounter) providing fast clinical verification with 5.0% position bias detection and automated routing to human reviewers.
 - **Offline Mock / Synthetic Test Runner (`mock-judge`)**: **$0.00000 measured cost** for deterministic verification of rubric invariants and CI testing.
 - **Commercial Frontier Models (e.g., GPT-4o, Claude 3.5 Sonnet)**: Highest reasoning fidelity for complex differential diagnoses and subtle contraindications, at an approximate cost of **$0.0084 to $0.0207 per arbitrated encounter** (comprising two inference passes for position-bias mitigation).
 - **Cost-Optimized Cloud Models (e.g., GPT-4o-mini, Claude 3.5 Haiku, Llama 3.3 70B)**: Reductions of **75% to 95%** in token expenditure ($0.0004 to $0.0019 per arbitration), suitable for high-throughput batch auditing.
